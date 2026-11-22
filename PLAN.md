@@ -3,8 +3,8 @@
 A JavaFX desktop app for the HCI course (deliverable 3). It implements one main scenario end to end.
 Solo coursework; the output is the source code, project files and run instructions.
 
-**Active phases:** 3
-**Open:**
+**Active phases:** 7
+**Open:** 8 (final README pass and the launch check from the README)
 **Deadline:** Sunday 6 December 2026, <time + timezone>
 **Target completion:** Wednesday 2 December 2026 (4 days of buffer)
 
@@ -122,9 +122,9 @@ Artifacts:
 - `browse-view.fxml` and its controller
 
 Done when:
-- [ ] The running app shows the 6 sample events
-- [ ] Typing in the search box filters the list by title or location
-- [ ] "No events found" shows when nothing matches
+- [x] The running app shows the 6 sample events
+- [x] Typing in the search box filters the list by title or location
+- [x] "No events found" shows when nothing matches
 
 Risk: the row content and layout are guessed, because the W1 wireframe has not
 been checked yet. Mitigation: get the W1 wireframe before building the screen.
@@ -139,9 +139,9 @@ Artifacts:
 - `details-view.fxml` and its controller
 
 Done when:
-- [ ] Invalid input shows a message next to the field and blocks submit
-- [ ] A valid submit shows a success message
-- [ ] A full event shows "Event full" and disables the form
+- [x] Invalid input shows a message next to the field and blocks submit
+- [x] A valid submit shows a success message
+- [x] A full event shows "Event full" and disables the form
 
 Risk: the form fields (full name, email, phone) are guessed. Mitigation: check
 them against the W2 wireframe before building the form.
@@ -156,10 +156,10 @@ Artifacts:
 - `registrations-view.fxml` and its controller
 
 Done when:
-- [ ] Cancel asks for confirmation
-- [ ] Yes removes the registration and frees the seat
-- [ ] No changes nothing
-- [ ] An empty list shows a message
+- [x] Cancel asks for confirmation
+- [x] Yes removes the registration and frees the seat
+- [x] No changes nothing
+- [x] An empty list shows a message
 
 ---
 
@@ -171,8 +171,8 @@ Artifacts:
 - `Navigator` — swaps screens in the main window
 
 Done when:
-- [ ] W1 → W2 → W3 → W1 works
-- [ ] Every screen has a way back
+- [x] W1 → W2 → W3 → W1 works
+- [x] Every screen has a way back
 
 ---
 
