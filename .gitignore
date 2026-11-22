@@ -39,6 +39,9 @@ build/
 .DS_Store
 
 ### Local tooling (not part of the submission) ###
-.claude/
 templates/
 .idea/copilot*.xml
+
+
+# Local handover note — never committed
+CHECKPOINT.md

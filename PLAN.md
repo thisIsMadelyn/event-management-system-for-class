@@ -1,59 +1,199 @@
 # Event Management System : Execution Plan
 
 A JavaFX desktop app for the HCI course (deliverable 3). It implements one main scenario end to end.
+Solo coursework; the output is the source code, project files and run instructions.
 
-**Deadline:** Sunday 6 December 2026
+**Active phases:** 3
+**Open:**
+**Deadline:** Sunday 6 December 2026, <time + timezone>
 **Target completion:** Wednesday 2 December 2026 (4 days of buffer)
 
-## Scenario
+---
 
-**S1:** an attendee (Yorikas) browses events, opens one, registers for it and sees it in *My registrations*.
-The screens follow the low-fidelity wireframes:
+## How to use this file
+
+Every session starts by reading the **Active phases** line and working inside
+those phases only. **Open** lists phases with unticked boxes that are not being
+worked right now — do not pick one up without saying so first.
+
+A phase is done when its **Done when** list is fully satisfied — not when the
+code "works". If a phase slips, cut scope inside that phase; do not borrow time
+from a later one.
+
+Only `/wrap-up` edits this file. It may:
+- tick a **Done when** box whose condition was verified this session
+- change the **Active phases** and **Open** lines
+- amend a line, **with a dated note saying what changed and why**
+
+It may not add phases, reorder them, rewrite a goal, or tick a box it did not
+verify. Those are your calls.
+
+---
+
+## 1. Hard constraints
+
+| Constraint | Consequence if missed |
+|---|---|
+| Submit by Sunday 6 December 2026 | Deliverable 3 is 40% of the grade |
+| At least 3 distinct working screens with navigation between them | A required brief item is missing |
+| One data entry screen (W2 registration form) | A required brief item is missing |
+| One screen that displays or searches data (W1 search, W3 list) | A required brief item is missing |
+| Input validation | A required brief item is missing |
+| Feedback after important actions: success, errors, event full, cancel confirmation | A required brief item is missing |
+| Source code, project files and short run instructions | A required brief item is missing |
+| Public repository, reviewed by the professor | Anything committed is seen and graded |
+
+- **Nothing beyond the brief is built.** Extra features cost time before the
+  deadline and are not graded. Suggestions go in a separate list instead.
+- **Only JDK 21 may be needed to run it.** The marker runs it from the README.
+  Keep to the Maven Wrapper and the two JavaFX modules.
+
+---
+
+## 2. Architecture, as locked
+
+**Scenario S1:** an attendee (Yorikas) browses events, opens one, registers for
+it and sees it in *My registrations*. The screens follow the low-fidelity
+wireframes:
 
 - **W1 Browse events:** event list with search
 - **W2 Event details and registration:** event details plus the registration form
 - **W3 My registrations:** list of the attendee's registrations, with cancel
 
-## Requirements from the brief
+**Stack:** Java 21 (LTS), JavaFX 21.0.6 (`javafx-controls` and `javafx-fxml`
+only), Maven via the included wrapper. Other libraries would add setup for
+whoever runs the app.
 
-| Requirement | Covered by |
-|---|---|
-| At least 3 distinct working screens with navigation between them | W1, W2, W3 (steps 3–6) |
-| One data entry screen | W2 registration form (step 4) |
-| One screen that displays or searches data | W1 search, W3 list (steps 3, 5) |
-| Input validation | W2 form (step 4) |
-| Feedback after important actions: success, errors, event full, cancel confirmation | Steps 4, 5 |
-| Source code, project files and short run instructions | Repository, README (step 8) |
+**Data:** in-memory sample data in `DataStore`, no database. The brief does not
+ask for persistence.
 
-Nothing beyond this list is in scope.
+**Screens:** one FXML file and one controller per wireframe, so each screen can
+be checked against its wireframe.
 
-## Stack
+**Validation:** plain Java, no validation library.
 
-- Java 21 (LTS)
-- JavaFX 21.0.6, `javafx-controls` and `javafx-fxml` only
-- Maven via the included wrapper (`mvnw`), no global Maven needed
-- In-memory sample data, no database
+**Feedback:** labels on the screen, plus a confirmation dialog for cancel.
 
-## Steps
+**Look:** plain CSS (greys, simple borders) to stay close to the low-fidelity
+wireframes.
 
-| # | Step | Output | Done when | Target |
-|---|---|---|---|---|
-| 1 | Setup | Trimmed `pom.xml` and `module-info.java`; starter files replaced with an empty main window | `mvnw clean javafx:run` opens an empty window titled "Event Management System" | Mon 23 Nov |
-| 2 | Data | `Event`, `Registration`, `DataStore` with about 6 sample events, one of them full | The app starts with sample data; registering for the full event is refused | Tue 24 Nov |
-| 3 | W1 Browse events | `browse-view.fxml` and its controller: event list and search box | Typing filters the list by title or location; "No events found" shows when nothing matches | Wed 25 Nov |
-| 4 | W2 Details and registration | `details-view.fxml` and its controller: event details and form | Invalid input shows a message next to the field and blocks submit; a valid submit shows a success message; a full event shows "Event full" and disables the form | Fri 27 Nov |
-| 5 | W3 My registrations | `registrations-view.fxml` and its controller: registrations list and Cancel | Cancel asks for confirmation; Yes removes the registration and frees the seat; No changes nothing; an empty list shows a message | Sat 28 Nov |
-| 6 | Navigation | `Navigator`: swaps screens in one window | W1 → W2 → W3 → W1 works, and every screen has a way back | Sun 29 Nov |
-| 7 | End-to-end check | Checklist run against the brief, screenshot of each screen | Every requirement above is ticked from a real run | Mon 30 Nov |
-| 8 | README | `README.md`: requirements, run commands, description of S1 | Someone with only JDK 21 installed can launch the app from it | Tue 1 Dec |
+**Scope cap:** the brief's requirement list is the upper bound. Never cut: S1
+working end to end across W1, W2 and W3. Cut first: <...>
 
-## Design decisions
+---
 
-- One FXML file and one controller per wireframe.
-- Validation is plain Java, with no validation library.
-- Feedback uses labels on the screen, plus a confirmation dialog for cancel.
-- Plain CSS (greys, simple borders) to stay close to the low-fidelity wireframes.
+## 3. Phases
 
-## Open items
+### Phase 1 — Setup · Mon 23 Nov
 
-- W2 form fields, the W1 row content and the layout of each screen are to be confirmed against the wireframes.
+**Goal:** the project builds and opens an empty app window, with only the libraries the brief needs.
+
+Artifacts:
+- `pom.xml`, `module-info.java` — trimmed to `javafx-controls` and `javafx-fxml`
+- `EventApplication.java`, `main-view.fxml` — empty main window
+
+Done when:
+- [x] `mvnw clean javafx:run` opens a window titled "Event Management System"
+
+---
+
+### Phase 2 — Data · Tue 24 Nov
+
+**Goal:** the app has sample events and registrations in memory, and a full event cannot be registered for.
+
+Artifacts:
+- `model/Event.java`, `model/Registration.java`, `model/RegistrationResult.java`, `model/DataStore.java`
+
+Done when:
+- [x] `DataStore` loads 6 sample events, one of them full
+- [x] Registering for the full event is refused and changes nothing
+
+Note (2026-11-22): the original line was "The app starts with sample data". No
+screen shows data yet, so the check was done with a throwaway program against
+the compiled classes. Seeing the data in the running app moved to Phase 3.
+
+---
+
+### Phase 3 — W1 Browse events · Wed 25 Nov
+
+**Goal:** the attendee sees the list of events and can search it.
+
+Artifacts:
+- `browse-view.fxml` and its controller
+
+Done when:
+- [ ] The running app shows the 6 sample events
+- [ ] Typing in the search box filters the list by title or location
+- [ ] "No events found" shows when nothing matches
+
+Risk: the row content and layout are guessed, because the W1 wireframe has not
+been checked yet. Mitigation: get the W1 wireframe before building the screen.
+
+---
+
+### Phase 4 — W2 Details and registration · Fri 27 Nov
+
+**Goal:** the attendee sees an event's details and can register through a validated form.
+
+Artifacts:
+- `details-view.fxml` and its controller
+
+Done when:
+- [ ] Invalid input shows a message next to the field and blocks submit
+- [ ] A valid submit shows a success message
+- [ ] A full event shows "Event full" and disables the form
+
+Risk: the form fields (full name, email, phone) are guessed. Mitigation: check
+them against the W2 wireframe before building the form.
+
+---
+
+### Phase 5 — W3 My registrations · Sat 28 Nov
+
+**Goal:** the attendee sees their registrations and can cancel one after confirming.
+
+Artifacts:
+- `registrations-view.fxml` and its controller
+
+Done when:
+- [ ] Cancel asks for confirmation
+- [ ] Yes removes the registration and frees the seat
+- [ ] No changes nothing
+- [ ] An empty list shows a message
+
+---
+
+### Phase 6 — Navigation · Sun 29 Nov
+
+**Goal:** the three screens are connected in one window following S1.
+
+Artifacts:
+- `Navigator` — swaps screens in the main window
+
+Done when:
+- [ ] W1 → W2 → W3 → W1 works
+- [ ] Every screen has a way back
+
+---
+
+### Phase 7 — End-to-end check · Mon 30 Nov
+
+**Goal:** every brief requirement is confirmed from a real run.
+
+Artifacts:
+- Checklist run against §1, with a screenshot of each screen
+
+Done when:
+- [ ] Every requirement in §1 is ticked from a real run
+
+---
+
+### Phase 8 — README · Tue 1 Dec
+
+**Goal:** someone else can run the app from the instructions alone.
+
+Artifacts:
+- `README.md` — requirements, run commands, description of S1
+
+Done when:
+- [ ] Someone with only JDK 21 installed can launch the app from the README
