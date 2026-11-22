@@ -28,6 +28,7 @@ Read `PLAN.md` for the active phases before starting work.
 | `CLAUDE.md` | yes | Operating instructions. Static. Changes only when an invariant changes. |
 | `PLAN.md` | yes | Implementation plan by phase. The **Active phases** line bounds all work. |
 | `SESSION_HISTORY.md` | yes | Public, append-only log. One entry per session. |
+| `REPORTS.md` | yes | Incident log. One entry per problem: cause, resolution, how it was verified. Newest first. |
 | `CHECKPOINT.md` | **no — gitignored** | Local handover note. Overwritten in full each session. Read only when its first line says so. |
 
 `CHECKPOINT.md` is never staged, committed or pushed.
@@ -46,9 +47,13 @@ Read `PLAN.md` for the active phases before starting work.
 4. One concern per change. When the user reports one issue, fix that issue only.
 5. Propose any broader refactor before doing it — do not bundle it in.
 6. Run the relevant check before claiming something works.
+7. When something goes wrong, add an entry to `REPORTS.md` when it happens,
+   in the file's INC-NNN format. Failed commands, wrong fixes, test failures
+   (including false alarms) and side effects all count. Say so when a cause or
+   fix is unconfirmed.
 
 **End**
-7. Run `/wrap-up`. Do not hand-edit `CHECKPOINT.md` or `SESSION_HISTORY.md`.
+8. Run `/wrap-up`. Do not hand-edit `CHECKPOINT.md` or `SESSION_HISTORY.md`.
 
 ---
 

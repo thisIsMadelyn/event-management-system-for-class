@@ -36,4 +36,7 @@ public class Event {
 
     /** Takes one seat. Only DataStore calls this, after checking isFull(). */
     void takeSeat() { seatsTaken++; }
+
+    /** Frees one seat. Only DataStore calls this, when a registration is cancelled. */
+    void releaseSeat() { seatsTaken--; }
 }

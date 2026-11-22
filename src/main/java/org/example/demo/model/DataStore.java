@@ -41,6 +41,15 @@ public class DataStore {
         return RegistrationResult.SUCCESS;
     }
 
+    /** Cancels a registration and frees its seat. Returns false if it was not registered. */
+    public boolean cancel(Registration registration) {
+        if (!registrations.remove(registration)) {
+            return false;
+        }
+        registration.getEvent().releaseSeat();
+        return true;
+    }
+
     private void loadSampleEvents() {
         events.add(new Event(1, "UX Design Workshop",
                 LocalDateTime.of(2026, 12, 10, 18, 0), "Athens",
