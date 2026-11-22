@@ -50,3 +50,50 @@
 .empty-message {
     -fx-text-fill: #616161;
 }
+
+/* W2 form and feedback */
+
+.section-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+.text-field.field-invalid {
+    -fx-border-color: #b00020;
+    -fx-border-width: 2;
+}
+
+.field-error {
+    -fx-text-fill: #b00020;
+    -fx-font-size: 13px;
+}
+
+.button {
+    -fx-background-color: #e0e0e0;
+    -fx-border-color: #616161;
+    -fx-background-radius: 0;
+    -fx-border-radius: 0;
+    -fx-padding: 6 18;
+}
+
+.button:hover {
+    -fx-background-color: #d0d0d0;
+}
+
+.feedback {
+    -fx-padding: 10 12;
+    -fx-border-width: 1;
+    -fx-font-weight: bold;
+}
+
+.feedback-success {
+    -fx-background-color: #eeeeee;
+    -fx-border-color: #616161;
+    -fx-text-fill: #212121;
+}
+
+.feedback-error {
+    -fx-background-color: #fdecee;
+    -fx-border-color: #b00020;
+    -fx-text-fill: #b00020;
+}
