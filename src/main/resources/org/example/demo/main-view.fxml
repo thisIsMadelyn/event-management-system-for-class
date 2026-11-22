@@ -2,5 +2,9 @@
 
 <?import javafx.scene.layout.BorderPane?>
 
-<!-- Main window. The W1, W2 and W3 screens will be placed in the center. -->
-<BorderPane xmlns:fx="http://javafx.com/fxml"/>
+<!-- Main window. Shows W1 for now; screen switching comes in Phase 6. -->
+<BorderPane xmlns:fx="http://javafx.com/fxml">
+    <center>
+        <fx:include source="browse-view.fxml"/>
+    </center>
+</BorderPane>

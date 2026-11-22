@@ -12,6 +12,7 @@ public class EventApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader loader = new FXMLLoader(EventApplication.class.getResource("main-view.fxml"));
         Scene scene = new Scene(loader.load(), 1000, 700);
+        scene.getStylesheets().add(EventApplication.class.getResource("app.css").toExternalForm());
         stage.setTitle("Event Management System");
         stage.setScene(scene);
         stage.show();

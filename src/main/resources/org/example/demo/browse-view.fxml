@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+
+<!-- W1 Browse events -->
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.demo.BrowseController"
+      spacing="12" styleClass="screen">
+    <padding>
+        <Insets top="20" right="24" bottom="20" left="24"/>
+    </padding>
+
+    <Label text="Browse events" styleClass="screen-title"/>
+    <TextField fx:id="searchField" promptText="Search by title or location"/>
+    <ListView fx:id="eventList" VBox.vgrow="ALWAYS"/>
+</VBox>
