@@ -3,6 +3,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
 <!-- W3 My registrations -->
@@ -11,6 +13,10 @@
     <padding>
         <Insets top="20" right="24" bottom="20" left="24"/>
     </padding>
+
+    <HBox alignment="CENTER_LEFT">
+        <Button fx:id="backButton" text="← Back to events" onAction="#onBack"/>
+    </HBox>
 
     <Label text="My registrations" styleClass="screen-title"/>
     <Label fx:id="feedbackLabel" styleClass="feedback,feedback-success"

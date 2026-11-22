@@ -24,6 +24,28 @@ Entries are listed newest first.
 
 ---
 
+## INC-006 · 2026-11-22 · Registration not reachable in the running app
+
+- **Phase:** 5 (W3 My registrations), found during manual testing
+- **Status:** resolved in Phase 6
+- **What happened:** during a manual test after Phase 5, the developer found no
+  way to register for an event. Only W1 (Browse events) can be reached.
+  Clicking an event does nothing.
+- **Impact:** the main scenario (S1) cannot be tried end to end in the app. W2
+  and W3 exist and passed automated tests, but a user cannot reach them.
+- **Cause:** build order. The plan builds each screen first (Phases 3–5) and
+  connects them in Phase 6 (navigation). Until then the main window shows only
+  W1. This was mentioned before the manual test but was not obvious from the
+  app itself.
+- **Resolution:** Phase 6 added `Navigator`, which switches screens in the
+  main window. Clicking an event in W1 (or pressing Enter on it) opens W2. W1
+  and W2 have a "My registrations" button, and W2 and W3 have
+  "← Back to events".
+- **Verified by:** an automated end-to-end test of S1 through the real
+  application class (18 of 18 checks passed), then a manual test of the whole
+  scenario in the running app by the developer, who confirmed it works.
+- **Follow-up:** none.
+
 ## INC-005 · 2026-11-22 · W3 empty-list message missing in automated test
 
 - **Phase:** 5 (W3 My registrations)

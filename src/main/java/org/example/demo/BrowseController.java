@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
@@ -42,10 +43,30 @@ public class BrowseController {
 
         searchField.textProperty().addListener((obs, oldText, newText) ->
                 filtered.setPredicate(event -> EventSearch.matches(event, newText)));
+
+        // Keyboard: Enter on the selected event opens it.
+        eventList.setOnKeyPressed(key -> {
+            if (key.getCode() == KeyCode.ENTER && eventList.getSelectionModel().getSelectedItem() != null) {
+                Navigator.showDetails(eventList.getSelectionModel().getSelectedItem());
+            }
+        });
     }
 
-    /** One row: title on top, then date and time, location and seats. */
+    @FXML
+    private void onMyRegistrations() {
+        Navigator.showRegistrations();
+    }
+
+    /** One row: title on top, then date and time, location and seats. Clicking it opens W2. */
     private static class EventCell extends ListCell<Event> {
+        EventCell() {
+            setOnMouseClicked(click -> {
+                if (!isEmpty() && getItem() != null) {
+                    Navigator.showDetails(getItem());
+                }
+            });
+        }
+
         @Override
         protected void updateItem(Event event, boolean empty) {
             super.updateItem(event, empty);

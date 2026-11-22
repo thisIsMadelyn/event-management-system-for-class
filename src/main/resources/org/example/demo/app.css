@@ -51,6 +51,15 @@
     -fx-text-fill: #616161;
 }
 
+.hint {
+    -fx-text-fill: #616161;
+    -fx-font-size: 13px;
+}
+
+.list-cell:filled {
+    -fx-cursor: hand;
+}
+
 /* W2 form and feedback */
 
 .section-title {
