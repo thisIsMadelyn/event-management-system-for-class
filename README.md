@@ -17,7 +17,7 @@ It has four screens, which follow the low-fidelity wireframes. W1 to W3 cover S1
 
 All data is held in memory and starts from sample events. Nothing is saved between runs.
 
-> **Status:** in development. See [PLAN.md](PLAN.md) for the steps and their progress.
+> **Status:** complete. See [PLAN.md](PLAN.md) for the steps it was built in.
 
 ## Requirements
 
