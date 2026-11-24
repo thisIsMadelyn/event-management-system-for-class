@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 public class MainController {
     @FXML private Button browseButton;
     @FXML private Button registrationsButton;
+    @FXML private Button createEventButton;
 
     @FXML
     private void onBrowse() {
@@ -18,20 +19,30 @@ public class MainController {
         Navigator.showRegistrations();
     }
 
+    @FXML
+    private void onCreateEvent() {
+        Navigator.showCreateEvent();
+    }
+
     /** Marks Browse Events as the current section (W1 and W2). */
     void highlightBrowse() {
-        highlight(browseButton, registrationsButton);
+        highlight(browseButton);
     }
 
     /** Marks My Registrations as the current section (W3). */
     void highlightRegistrations() {
-        highlight(registrationsButton, browseButton);
+        highlight(registrationsButton);
     }
 
-    private void highlight(Button current, Button other) {
-        other.getStyleClass().remove("nav-current");
-        if (!current.getStyleClass().contains("nav-current")) {
-            current.getStyleClass().add("nav-current");
+    /** Marks Create Event as the current section (W4). */
+    void highlightCreateEvent() {
+        highlight(createEventButton);
+    }
+
+    private void highlight(Button current) {
+        for (Button button : new Button[]{browseButton, registrationsButton, createEventButton}) {
+            button.getStyleClass().remove("nav-current");
         }
+        current.getStyleClass().add("nav-current");
     }
 }

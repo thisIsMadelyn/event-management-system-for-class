@@ -5,14 +5,16 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-<!-- Main window: the navigation bar. Navigator places the current screen (W1, W2 or W3) in the center. -->
+<!-- Main window: the navigation bar. Navigator places the current screen (W1 to W4) in the center. -->
 <BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.demo.MainController">
     <top>
         <HBox alignment="CENTER_LEFT" spacing="20" styleClass="nav-bar">
-            <Label text="Event Management System" styleClass="app-name"/>
+            <Label text="Event Management System" wrapText="true" styleClass="app-name"/>
             <Button fx:id="browseButton" text="Browse Events" styleClass="button,nav-button" onAction="#onBrowse"/>
             <Button fx:id="registrationsButton" text="My Registrations" styleClass="button,nav-button"
                     onAction="#onRegistrations"/>
+            <Button fx:id="createEventButton" text="Create Event (organizers)"
+                    styleClass="button,nav-button,nav-button-wide" onAction="#onCreateEvent"/>
         </HBox>
     </top>
 </BorderPane>

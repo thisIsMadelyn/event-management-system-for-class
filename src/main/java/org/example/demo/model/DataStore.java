@@ -2,9 +2,11 @@ package org.example.demo.model;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -31,6 +33,15 @@ public class DataStore {
 
     public List<Registration> getRegistrations() {
         return Collections.unmodifiableList(registrations);
+    }
+
+    /** Publishes a new event with no places taken, in date order. Form validation happens in the W4 screen. */
+    public Event addEvent(String title, Category category, LocalDateTime start, LocalDateTime end,
+                          String location, String description, int capacity) {
+        Event event = new Event(events.size() + 1, title, category, start, end, location, description, capacity, 0);
+        events.add(event);
+        events.sort(Comparator.comparing(Event::getStart));
+        return event;
     }
 
     /**

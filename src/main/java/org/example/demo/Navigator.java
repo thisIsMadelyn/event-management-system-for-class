@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.io.UncheckedIOException;
 
 /**
- * Switches between the three screens inside the one main window and marks the current section in the bar.
+ * Switches between the four screens inside the one main window and marks the current section in the bar.
  * Each screen is loaded fresh, so it always shows the current data (seats, registrations).
  */
 public final class Navigator {
@@ -64,6 +64,21 @@ public final class Navigator {
         controller.showMessage(message);
         root.setCenter(loader.getRoot());
         bar.highlightRegistrations();
+    }
+
+    /** W4 Create event, with an empty form. */
+    public static void showCreateEvent() {
+        root.setCenter(load("create-event-view.fxml").getRoot());
+        bar.highlightCreateEvent();
+    }
+
+    /** W4 Create event, with an empty form and a message about what just happened. */
+    public static void showCreateEvent(String message) {
+        FXMLLoader loader = load("create-event-view.fxml");
+        CreateEventController controller = loader.getController();
+        controller.showMessage(message);
+        root.setCenter(loader.getRoot());
+        bar.highlightCreateEvent();
     }
 
     private static FXMLLoader load(String fxml) {

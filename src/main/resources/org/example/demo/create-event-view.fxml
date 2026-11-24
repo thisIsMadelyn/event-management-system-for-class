@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<!-- W4 Create event (organizers). Scrolls when the window is small. -->
+<ScrollPane xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.demo.CreateEventController"
+            fitToWidth="true" focusTraversable="false" styleClass="scroll-pane,event-scroll">
+    <VBox spacing="12">
+        <padding>
+            <Insets top="20" right="60" bottom="28" left="60"/>
+        </padding>
+
+        <Label fx:id="feedbackLabel" styleClass="feedback,feedback-success" maxWidth="Infinity"
+               visible="false" managed="false" wrapText="true"/>
+        <Label text="Create event" styleClass="screen-title"/>
+        <Label text="* Required field"/>
+
+        <HBox spacing="40" alignment="TOP_LEFT">
+            <VBox spacing="6" minWidth="260" prefWidth="480">
+                <Label text="Event title *"/>
+                <TextField fx:id="titleField" styleClass="text-field,form-field"
+                           accessibleText="Event title, required"/>
+                <Label fx:id="titleError" styleClass="field-error" visible="false" managed="false" wrapText="true"/>
+
+                <Label text="Category (Workshop, Talk or Social) *"/>
+                <ComboBox fx:id="categoryBox" promptText="Select category" maxWidth="Infinity"
+                          styleClass="combo-box,form-field" accessibleText="Category, required"/>
+                <Label fx:id="categoryError" styleClass="field-error" visible="false" managed="false" wrapText="true"/>
+
+                <Label text="Location *"/>
+                <TextField fx:id="locationField" styleClass="text-field,form-field"
+                           accessibleText="Location, required"/>
+                <Label fx:id="locationError" styleClass="field-error" visible="false" managed="false" wrapText="true"/>
+
+                <Label text="Description (optional)"/>
+                <TextArea fx:id="descriptionArea" prefRowCount="5" wrapText="true"
+                          accessibleText="Description, optional"/>
+            </VBox>
+
+            <VBox spacing="6" minWidth="220" prefWidth="280">
+                <Label text="Date *"/>
+                <TextField fx:id="dateField" promptText="dd/mm/yyyy" styleClass="text-field,form-field"
+                           accessibleText="Date, day month year, required"/>
+                <Label fx:id="dateError" styleClass="field-error" visible="false" managed="false" wrapText="true"/>
+
+                <Label text="Start time *"/>
+                <TextField fx:id="startField" promptText="hh:mm" styleClass="text-field,form-field"
+                           accessibleText="Start time, required"/>
+                <Label fx:id="startError" styleClass="field-error" visible="false" managed="false" wrapText="true"/>
+
+                <Label text="End time *"/>
+                <TextField fx:id="endField" promptText="hh:mm" styleClass="text-field,form-field"
+                           accessibleText="End time, required"/>
+                <Label fx:id="endError" styleClass="field-error" visible="false" managed="false" wrapText="true"/>
+
+                <Label text="Capacity (maximum attendees) *"/>
+                <TextField fx:id="capacityField" styleClass="text-field,form-field"
+                           accessibleText="Capacity, maximum attendees, required"/>
+                <Label fx:id="capacityError" styleClass="field-error" visible="false" managed="false" wrapText="true"/>
+            </VBox>
+        </HBox>
+
+        <HBox spacing="20">
+            <VBox.margin>
+                <Insets top="14"/>
+            </VBox.margin>
+            <Button fx:id="publishButton" text="Publish event" minWidth="200" defaultButton="true"
+                    styleClass="button,primary,form-button" onAction="#onPublish"/>
+            <Button fx:id="discardButton" text="Discard" minWidth="130" styleClass="button,secondary,form-button"
+                    onAction="#onDiscard"/>
+        </HBox>
+    </VBox>
+</ScrollPane>

@@ -17,7 +17,7 @@
 .app-name {
     -fx-font-size: 16px;
     -fx-pref-width: 376;
-    -fx-min-width: 190;
+    -fx-min-width: 94;
 }
 
 .nav-bar .nav-button {
@@ -25,8 +25,13 @@
     -fx-border-color: #212121;
     -fx-border-width: 2;
     -fx-pref-width: 200;
-    -fx-min-width: 150;
+    -fx-min-width: 145;
     -fx-padding: 8 18;
+}
+
+.nav-bar .nav-button-wide {
+    -fx-pref-width: 240;
+    -fx-min-width: 205;
 }
 
 .nav-bar .nav-button:hover {
