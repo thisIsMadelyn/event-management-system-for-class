@@ -10,7 +10,7 @@ Note (2026-11-24): Phases 2–6 reopened to align W1–W3 with the report (INC-0
 Ticked boxes record the earlier build. Phase 9 (W4) was added on the same day
 at the developer's request.
 
-**Deadline:** Sunday 6 December 2026, <time + timezone>
+**Deadline:** Sunday 6 December 2026, 24:00, via Moodle
 **Target completion:** Wednesday 2 December 2026 (4 days of buffer)
 
 ---
