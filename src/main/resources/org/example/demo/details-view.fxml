@@ -42,10 +42,6 @@
         <TextField fx:id="emailField" promptText="name@example.com"/>
         <Label fx:id="emailError" styleClass="field-error" visible="false" managed="false" wrapText="true"/>
 
-        <Label text="Phone" labelFor="$phoneField"/>
-        <TextField fx:id="phoneField"/>
-        <Label fx:id="phoneError" styleClass="field-error" visible="false" managed="false" wrapText="true"/>
-
         <Button fx:id="registerButton" text="Register" defaultButton="true" onAction="#onRegister">
             <VBox.margin>
                 <Insets top="8"/>

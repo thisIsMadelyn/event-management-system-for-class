@@ -77,7 +77,7 @@ public class BrowseController {
             Label title = new Label(event.getTitle());
             title.getStyleClass().add("event-title");
 
-            Label date = new Label(event.getDateTime().format(DATE_FORMAT));
+            Label date = new Label(event.getStart().format(DATE_FORMAT));
             Label location = new Label(event.getLocation());
             Region spacer = new Region();
             HBox.setHgrow(spacer, Priority.ALWAYS);

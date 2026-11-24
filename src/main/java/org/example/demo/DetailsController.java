@@ -27,10 +27,8 @@ public class DetailsController {
     @FXML private VBox form;
     @FXML private TextField fullNameField;
     @FXML private TextField emailField;
-    @FXML private TextField phoneField;
     @FXML private Label fullNameError;
     @FXML private Label emailError;
-    @FXML private Label phoneError;
     @FXML private Button registerButton;
     @FXML private Label feedbackLabel;
 
@@ -40,7 +38,7 @@ public class DetailsController {
     public void setEvent(Event event) {
         this.event = event;
         titleLabel.setText(event.getTitle());
-        dateLabel.setText(event.getDateTime().format(DATE_FORMAT));
+        dateLabel.setText(event.getStart().format(DATE_FORMAT));
         locationLabel.setText(event.getLocation());
         descriptionLabel.setText(event.getDescription());
         updateSeats();
@@ -58,23 +56,29 @@ public class DetailsController {
                 RegistrationValidator.validateFullName(fullNameField.getText()));
         boolean emailOk = showError(emailField, emailError,
                 RegistrationValidator.validateEmail(emailField.getText()));
-        boolean phoneOk = showError(phoneField, phoneError,
-                RegistrationValidator.validatePhone(phoneField.getText()));
 
-        if (!(nameOk && emailOk && phoneOk)) {
+        if (!(nameOk && emailOk)) {
             showFeedback("Please correct the highlighted fields.", "feedback-error");
             return;
         }
 
+        // One place and no needs for now: the W2 form does not ask for them yet.
         RegistrationResult result = DataStore.getInstance().register(event,
-                fullNameField.getText().trim(), emailField.getText().trim(), phoneField.getText().trim());
+                fullNameField.getText().trim(), emailField.getText().trim(), 1, "");
 
         updateSeats();
-        form.setDisable(true);
-        if (result == RegistrationResult.SUCCESS) {
-            showFeedback("You are registered for " + event.getTitle() + ".", "feedback-success");
-        } else {
-            showFeedback("Event full. Registration is closed for this event.", "feedback-error");
+        switch (result) {
+            case SUCCESS -> {
+                form.setDisable(true);
+                showFeedback("You are registered for " + event.getTitle() + ".", "feedback-success");
+            }
+            case EVENT_FULL -> {
+                form.setDisable(true);
+                showFeedback("Event full. Registration is closed for this event.", "feedback-error");
+            }
+            case NOT_ENOUGH_PLACES -> showFeedback("Not enough places left.", "feedback-error");
+            case ALREADY_REGISTERED -> showFeedback(
+                    "This email address is already registered for this event.", "feedback-error");
         }
     }
 

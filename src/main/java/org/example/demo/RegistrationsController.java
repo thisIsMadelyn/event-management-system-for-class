@@ -80,7 +80,7 @@ public class RegistrationsController {
             Label title = new Label(registration.getEvent().getTitle());
             title.getStyleClass().add("event-title");
 
-            Label details = new Label(registration.getEvent().getDateTime().format(DATE_FORMAT)
+            Label details = new Label(registration.getEvent().getStart().format(DATE_FORMAT)
                     + "    " + registration.getEvent().getLocation()
                     + "    Registered as " + registration.getFullName());
             details.getStyleClass().add("event-details");

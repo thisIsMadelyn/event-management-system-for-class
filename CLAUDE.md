@@ -82,7 +82,7 @@ Read `PLAN.md` for the active phases before starting work.
 
 - **`DataStore` is the only place app data lives.** Events and registrations are
   held in memory there; screens read and change data only through it. Every run
-  starts from the same sample data.
+  starts from the same sample events, dated relative to today.
 - **A seat is taken only through `DataStore.register()`.** `Event.takeSeat()` is
   package-private so the full-event check cannot be bypassed.
 - **One FXML file and one controller per wireframe screen.** W1, W2 and W3 each
