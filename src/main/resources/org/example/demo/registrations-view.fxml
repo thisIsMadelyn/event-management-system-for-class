@@ -1,19 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.VBox?>
 
 <!-- W3 My registrations -->
 <VBox xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.demo.RegistrationsController"
-      spacing="12" styleClass="screen">
+      spacing="24" styleClass="screen">
     <padding>
-        <Insets top="20" right="24" bottom="20" left="24"/>
+        <Insets top="20" right="60" bottom="28" left="60"/>
     </padding>
 
-    <Label text="My registrations" styleClass="screen-title"/>
-    <Label fx:id="feedbackLabel" styleClass="feedback,feedback-success"
+    <Label fx:id="feedbackLabel" styleClass="feedback,feedback-success" maxWidth="Infinity"
            visible="false" managed="false" wrapText="true"/>
-    <ListView fx:id="registrationList" VBox.vgrow="ALWAYS"/>
+    <Label text="My registrations" styleClass="screen-title"/>
+
+    <!-- Wider than its columns, so that a vertical scroll bar does not cause a horizontal one. -->
+    <TableView fx:id="registrationTable" focusTraversable="false" maxWidth="930" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="eventColumn" text="Event" prefWidth="280" sortable="false" reorderable="false"/>
+            <TableColumn fx:id="dateColumn" text="Date and time" prefWidth="190" sortable="false" reorderable="false"/>
+            <TableColumn fx:id="locationColumn" text="Location" prefWidth="150" sortable="false" reorderable="false"/>
+            <TableColumn fx:id="placesColumn" text="Places" prefWidth="90" sortable="false" reorderable="false"/>
+            <TableColumn fx:id="actionColumn" text="Action" prefWidth="200" sortable="false" reorderable="false"/>
+        </columns>
+    </TableView>
+
+    <VBox fx:id="emptyState" alignment="CENTER" spacing="6" visible="false" managed="false"
+          minHeight="210" styleClass="empty-state">
+        <Label text="You have not registered for any events yet."/>
+        <Label text="Browse upcoming events to find one."/>
+        <Button fx:id="emptyBrowseButton" text="Browse Events" minWidth="200" styleClass="button,primary"
+                onAction="#onBrowse">
+            <VBox.margin>
+                <Insets top="30"/>
+            </VBox.margin>
+        </Button>
+    </VBox>
 </VBox>

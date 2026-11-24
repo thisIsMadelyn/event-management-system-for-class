@@ -1,17 +1,20 @@
 package org.example.demo;
 
+import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
+import javafx.scene.control.TableCell;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.VBox;
 import org.example.demo.model.DataStore;
 import org.example.demo.model.Registration;
@@ -23,42 +26,40 @@ import java.util.Locale;
 public class RegistrationsController {
     private static final DateTimeFormatter DATE_FORMAT =
             DateTimeFormatter.ofPattern("EEE d MMM yyyy, HH:mm", Locale.ENGLISH);
+    private static final double ROW_HEIGHT = 40;
+    /** The header row and the table's border. */
+    private static final double HEADER_HEIGHT = 42;
 
-    @FXML private ListView<Registration> registrationList;
     @FXML private Label feedbackLabel;
+    @FXML private TableView<Registration> registrationTable;
+    @FXML private TableColumn<Registration, String> eventColumn;
+    @FXML private TableColumn<Registration, String> dateColumn;
+    @FXML private TableColumn<Registration, String> locationColumn;
+    @FXML private TableColumn<Registration, String> placesColumn;
+    @FXML private TableColumn<Registration, Registration> actionColumn;
+    @FXML private VBox emptyState;
 
     private final ObservableList<Registration> items = FXCollections.observableArrayList();
 
     @FXML
     private void initialize() {
-        items.setAll(DataStore.getInstance().getRegistrations());
-        registrationList.setItems(items);
-        registrationList.setCellFactory(list -> new RegistrationCell());
+        eventColumn.setCellValueFactory(row -> new ReadOnlyStringWrapper(row.getValue().getEvent().getTitle()));
+        dateColumn.setCellValueFactory(row ->
+                new ReadOnlyStringWrapper(row.getValue().getEvent().getStart().format(DATE_FORMAT)));
+        locationColumn.setCellValueFactory(row -> new ReadOnlyStringWrapper(row.getValue().getEvent().getLocation()));
+        placesColumn.setCellValueFactory(row ->
+                new ReadOnlyStringWrapper(String.valueOf(row.getValue().getPlaces())));
+        actionColumn.setCellValueFactory(row -> new ReadOnlyObjectWrapper<>(row.getValue()));
+        actionColumn.setCellFactory(column -> new CancelCell());
 
-        Label empty = new Label("You have no registrations yet.");
-        empty.getStyleClass().add("empty-message");
-        registrationList.setPlaceholder(empty);
+        registrationTable.setFixedCellSize(ROW_HEIGHT);
+        registrationTable.setItems(items);
+        refresh();
     }
 
-    private void onCancel(Registration registration) {
-        String title = registration.getEvent().getTitle();
-        ButtonType yes = new ButtonType("Yes, cancel it", ButtonBar.ButtonData.OK_DONE);
-        ButtonType no = new ButtonType("No, keep it", ButtonBar.ButtonData.CANCEL_CLOSE);
-
-        Alert confirm = new Alert(Alert.AlertType.CONFIRMATION, "", yes, no);
-        confirm.setTitle("Cancel registration");
-        confirm.setHeaderText("Cancel your registration for " + title + "?");
-        confirm.setContentText("Your seat will be given up.");
-        if (registrationList.getScene() != null) {
-            confirm.initOwner(registrationList.getScene().getWindow());
-            confirm.getDialogPane().getStylesheets().addAll(registrationList.getScene().getStylesheets());
-        }
-
-        if (confirm.showAndWait().orElse(no) == yes) {
-            DataStore.getInstance().cancel(registration);
-            items.remove(registration);
-            showMessage("Your registration for " + title + " was cancelled.");
-        }
+    @FXML
+    private void onBrowse() {
+        Navigator.showBrowse();
     }
 
     /** Shows a message in the banner above the list. */
@@ -68,8 +69,58 @@ public class RegistrationsController {
         feedbackLabel.setManaged(true);
     }
 
-    /** One row: event title, date and location, the name registered with, and a Cancel button. */
-    private class RegistrationCell extends ListCell<Registration> {
+    /** Lists the current registrations, or the empty state. The table is only as tall as its rows. */
+    private void refresh() {
+        items.setAll(DataStore.getInstance().getRegistrations());
+        registrationTable.setMaxHeight(HEADER_HEIGHT + items.size() * ROW_HEIGHT);
+        setShown(registrationTable, !items.isEmpty());
+        setShown(emptyState, items.isEmpty());
+    }
+
+    private void onCancel(Registration registration) {
+        String title = registration.getEvent().getTitle();
+        if (confirmCancel(registration)) {
+            DataStore.getInstance().cancel(registration);
+            refresh();
+            showMessage("Your registration for " + title + " was cancelled.");
+        }
+    }
+
+    /** Asks once. Closing the dialog, Esc and Enter all keep the registration. */
+    private boolean confirmCancel(Registration registration) {
+        ButtonType keep = new ButtonType("Keep registration", ButtonBar.ButtonData.CANCEL_CLOSE);
+        ButtonType cancel = new ButtonType("Cancel registration", ButtonBar.ButtonData.OTHER);
+        String released = registration.getPlaces() == 1
+                ? "Your place will be released for other people."
+                : "Your " + registration.getPlaces() + " places will be released for other people.";
+
+        Alert confirm = new Alert(Alert.AlertType.CONFIRMATION, "Cancel your registration for "
+                + registration.getEvent().getTitle() + "?\n" + released, keep, cancel);
+        confirm.setTitle("Cancel registration");
+        confirm.setHeaderText(null);
+        confirm.setGraphic(null);
+        confirm.initOwner(registrationTable.getScene().getWindow());
+
+        DialogPane pane = confirm.getDialogPane();
+        pane.getStylesheets().addAll(registrationTable.getScene().getStylesheets());
+        pane.getStyleClass().add("confirm-dialog");
+        // Keeps the wireframe's order: Keep registration first.
+        ((ButtonBar) pane.lookup(".button-bar")).setButtonOrder(ButtonBar.BUTTON_ORDER_NONE);
+        Button keepButton = (Button) pane.lookupButton(keep);
+        keepButton.setDefaultButton(true);
+        keepButton.getStyleClass().add("primary");
+        pane.lookupButton(cancel).getStyleClass().add("secondary");
+
+        return confirm.showAndWait().orElse(keep) == cancel;
+    }
+
+    private static void setShown(Node node, boolean shown) {
+        node.setVisible(shown);
+        node.setManaged(shown);
+    }
+
+    /** The Action column: a button that cancels the row's registration. */
+    private class CancelCell extends TableCell<Registration, Registration> {
         @Override
         protected void updateItem(Registration registration, boolean empty) {
             super.updateItem(registration, empty);
@@ -77,24 +128,11 @@ public class RegistrationsController {
                 setGraphic(null);
                 return;
             }
-            Label title = new Label(registration.getEvent().getTitle());
-            title.getStyleClass().add("event-title");
-
-            Label details = new Label(registration.getEvent().getStart().format(DATE_FORMAT)
-                    + "    " + registration.getEvent().getLocation()
-                    + "    Registered as " + registration.getFullName());
-            details.getStyleClass().add("event-details");
-
-            VBox text = new VBox(4, title, details);
-            HBox.setHgrow(text, Priority.ALWAYS);
-
-            Button cancel = new Button("Cancel");
-            cancel.getStyleClass().add("cancel-button");
+            Button cancel = new Button("Cancel registration");
+            cancel.setAccessibleText("Cancel registration for " + registration.getEvent().getTitle());
+            cancel.getStyleClass().add("link-button");
             cancel.setOnAction(e -> onCancel(registration));
-
-            HBox row = new HBox(16, text, cancel);
-            row.setStyle("-fx-alignment: center-left;");
-            setGraphic(row);
+            setGraphic(cancel);
         }
     }
 }
