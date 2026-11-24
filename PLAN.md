@@ -3,11 +3,12 @@
 A JavaFX desktop app for the HCI course (deliverable 3). It implements one main scenario end to end.
 Solo coursework; the output is the source code, project files and run instructions.
 
-**Active phases:** 2, 3, 4, 5, 6
+**Active phases:** 2, 3, 4, 5, 6, 9
 **Open:** 7 (end-to-end check), 8 (final README pass and the launch check from the README)
 
 Note (2026-11-24): Phases 2–6 reopened to align W1–W3 with the report (INC-007).
-Ticked boxes record the earlier build.
+Ticked boxes record the earlier build. Phase 9 (W4) was added on the same day
+at the developer's request.
 
 **Deadline:** Sunday 6 December 2026, <time + timezone>
 **Target completion:** Wednesday 2 December 2026 (4 days of buffer)
@@ -63,6 +64,8 @@ wireframes:
 - **W1 Browse events:** event list with search
 - **W2 Event details and registration:** event details plus the registration form
 - **W3 My registrations:** list of the attendee's registrations, with cancel
+- **W4 Create event:** form with which an organizer publishes an event. Outside S1
+  (added 2026-11-24)
 
 **Stack:** Java 21 (LTS), JavaFX 21.0.6 (`javafx-controls` and `javafx-fxml`
 only), Maven via the included wrapper. Other libraries would add setup for
@@ -201,3 +204,19 @@ Artifacts:
 
 Done when:
 - [ ] Someone with only JDK 21 installed can launch the app from the README
+
+---
+
+### Phase 9 — W4 Create event · Tue 24 Nov
+
+**Goal:** an organizer can publish an event from one validated form, following the W4 wireframe.
+
+Artifacts:
+- `create-event-view.fxml` and its controller, `model/EventValidator.java`
+
+Done when:
+- [ ] Invalid input shows a message next to each wrong field and nothing typed is lost
+- [ ] A published event shows a success message and appears on Browse Events
+
+Note (2026-11-24): the brief does not require W4. It was added so that the app
+matches the wireframes. Scenario 2 is not implemented.

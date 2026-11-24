@@ -10,8 +10,9 @@ Operating instructions for Claude Code in this repository.
 events, opens one to see its details, registers for it through a form and then
 sees the registration under *My registrations*, where it can be cancelled. It
 implements one complete scenario (S1) across three screens (W1 Browse events,
-W2 Event details and registration, W3 My registrations), following low-fidelity
-wireframes.
+W2 Event details and registration, W3 My registrations). A fourth screen, W4
+Create event, lets an organizer publish an event and is outside S1. All four
+follow low-fidelity wireframes.
 
 HCI course assignment, deliverable 3 (40% of the grade). Deadline: Sunday
 6 December 2026. The development process is kept public on purpose so that it is
@@ -85,8 +86,8 @@ Read `PLAN.md` for the active phases before starting work.
   starts from the same sample events, dated relative to today.
 - **A seat is taken only through `DataStore.register()`.** `Event.takeSeat()` is
   package-private so the full-event check cannot be bypassed.
-- **One FXML file and one controller per wireframe screen.** W1, W2 and W3 each
-  map to one view, so the code can be checked against the wireframes.
+- **One FXML file and one controller per wireframe screen.** W1 to W4 each map to
+  one view, so the code can be checked against the wireframes.
 
 ---
 

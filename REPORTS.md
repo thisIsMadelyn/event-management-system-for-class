@@ -24,6 +24,25 @@ Entries are listed newest first.
 
 ---
 
+## INC-016 · 2026-11-24 · W3 table covered its last row; stale checks failed
+
+- **Phase:** 5 (W3 My registrations), reopened
+- **Status:** resolved
+- **What happened:** the first run of the new W3 checks failed 3 of 41. Later,
+  one W2 check and one W4 check also failed.
+- **Impact:** the new W3 table showed two scroll bars it did not need, and they
+  covered part of the last row. The other failures did not affect the app.
+- **Cause:** one real fault and two wrong checks:
+  - the table's columns filled its whole width. A scroll bar in one direction
+    then forced one in the other.
+  - one W3 check read the text of hidden labels
+  - the W2 and W4 checks looked for the old W3 list, which is now a table
+- **Resolution:** the table is slightly wider than its columns and exactly as
+  tall as its rows. The three checks were corrected.
+- **Verified by:** on the final code, 41 W3, 78 W4, 51 W2 and 139 W1 checks
+  passed, and the screenshot shows the whole table without scroll bars.
+- **Follow-up:** none.
+
 ## INC-015 · 2026-11-24 · Narrow window clipped again by the third bar button
 
 - **Phase:** W4 Create event, added on the developer's request
@@ -176,10 +195,12 @@ Entries are listed newest first.
   wireframes first. That was not done, and the screens were built from guesses.
 - **Resolution:** none yet. The developer decided on 2026-11-24 to align W1, W2
   and W3 with the report before Phase 7. The organizer screen (W4) stays out,
-  because only the second scenario needs it.
+  because only the second scenario needs it. Correction (2026-11-24): the
+  developer later asked for W4, so it was added.
 - **Verified by:** not verified.
 - **Follow-up:** run the same checks again after the screens are rebuilt. At
-  most 20 of 21 can pass, because one of them checks for W4.
+  most 20 of 21 can pass, because one of them checks for W4. Correction
+  (2026-11-24): W4 now exists, so that check no longer limits the result.
 
 ## INC-006 · 2026-11-22 · Registration not reachable in the running app
 

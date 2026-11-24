@@ -6,15 +6,16 @@ The app implements one complete scenario:
 
 > **S1:** an attendee (Yorikas) browses events, opens one, registers for it and sees it in *My registrations*.
 
-It has three screens, which follow the low-fidelity wireframes:
+It has four screens, which follow the low-fidelity wireframes. W1 to W3 cover S1:
 
 | Screen | Purpose |
 |---|---|
-| W1 Browse events | List of events with search |
+| W1 Browse events | List of upcoming events, with search by keyword, category and date |
 | W2 Event details and registration | Event details and the registration form, with input validation |
 | W3 My registrations | The attendee's registrations, with cancel and confirmation |
+| W4 Create event | Form with which an organizer publishes an event, with input validation |
 
-All data is sample data held in memory. Nothing is saved between runs.
+All data is held in memory and starts from sample events. Nothing is saved between runs.
 
 > **Status:** in development. See [PLAN.md](PLAN.md) for the steps and their progress.
 
