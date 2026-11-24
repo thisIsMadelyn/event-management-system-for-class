@@ -32,6 +32,47 @@ badges of either kind. Changes that are neither get a plain bullet.
 
 ---
 
+## Session [2026-11-24-1548]
+
+- **Start status:** `2a887c8`, tree clean, Phase 7 active and Phase 8 open. An
+  audit on 23 November (no repository changes) had found that the app met the
+  brief's minimum but passed only 1 of 21 checks against the report.
+- **End status:** work at `0e196b8`. Phases 2–6 were reopened, rebuilt from the
+  report and its wireframes, and closed again. Phase 9 (W4) was added and closed.
+  The updated tests passed 86 of 86, including 21 of 21 report checks (INC-007
+  closed). Still open:
+  - **Phase 7** (end-to-end check with screenshots) is next.
+  - **Phase 8** needs a launch check from the README on a machine with only JDK 21.
+  - FR19 is not implemented, because no wireframe shows it. Scenario 2 is not
+    implemented; only its screen, W4, is.
+  - The developer confirmed W1 and W2 by hand. No result was recorded for the
+    manual tests of W3 and W4.
+- **Badges:**
+  - 🆕 Addition — data model from the report: categories, end times, places,
+    needs, and sample events dated relative to today (`62d40d1`)
+  - 🐛 Bug fix — duplicate registrations refused; malformed emails refused and
+    accented names accepted; phone removed (`62d40d1`)
+  - 🆕 Addition — shared navigation bar, 1280x800 window, text of at least 14px
+    (`70adccf`)
+  - 🆕 Addition — W1 rebuilt: keyword, category and date search, View details,
+    Clear filters (`30e137c`)
+  - 🐛 Bug fix — right-click no longer opens an event; the search is kept on Back
+    (`30e137c`)
+  - 🆕 Addition — W2 rebuilt: two columns, places, needs, required markers,
+    success opens W3 (`d42f6af`)
+  - 🐛 Bug fix — W2 and the navigation bar no longer cut off in narrow windows
+    (`d42f6af`)
+  - 🆕 Addition — W4 Create event, at the developer's request (`f35e672`)
+  - 🆕 Addition — W3 rebuilt: table, banner, cancel dialog, empty state
+    (`057db1b`)
+  - 🐛 Bug fix — `mvnw` is executable in git, not tested on macOS or Linux (`0e196b8`)
+  - Removed unused JUnit dependencies (`2de950d`)
+  - Incident log: INC-007 to INC-016 (`7e3ebf1`, `0e9e961`, `dfa7525`, `c5b2b5b`,
+    `15264b2`, `093bd83`, `e1dea27`, `02b7ac8`)
+  - `README.md`, `CLAUDE.md` and `PLAN.md` updated for four screens; PLAN
+    deadline time filled in (`e1dea27`, `0e196b8`)
+  - PLAN ticks: Phase 9 complete; notes on Phases 3–6 (this wrap-up's docs commit)
+
 ## Session [2026-11-22-2015]
 
 - **Start status:** no commits yet. IntelliJ's JavaFX starter project was staged

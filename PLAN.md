@@ -3,12 +3,13 @@
 A JavaFX desktop app for the HCI course (deliverable 3). It implements one main scenario end to end.
 Solo coursework; the output is the source code, project files and run instructions.
 
-**Active phases:** 2, 3, 4, 5, 6, 9
-**Open:** 7 (end-to-end check), 8 (final README pass and the launch check from the README)
+**Active phases:** 7
+**Open:** 8 (final README pass and the launch check from the README)
 
 Note (2026-11-24): Phases 2–6 reopened to align W1–W3 with the report (INC-007).
 Ticked boxes record the earlier build. Phase 9 (W4) was added on the same day
-at the developer's request.
+at the developer's request. Phases 2–6 and 9 were closed again the same day,
+after 86 of 86 tests passed, and Phase 7 became active.
 
 **Deadline:** Sunday 6 December 2026, 24:00, via Moodle
 **Target completion:** Wednesday 2 December 2026 (4 days of buffer)
@@ -133,6 +134,10 @@ Done when:
 - [x] Typing in the search box filters the list by title or location
 - [x] "No events found" shows when nothing matches
 
+Note (2026-11-24): rebuilt from the W1 wireframe. Search runs on Search or Enter,
+by title or keyword, category and date, and no longer by location. The empty
+message is now "No events match your search." The risk below is closed.
+
 Risk: the row content and layout are guessed, because the W1 wireframe has not
 been checked yet. Mitigation: get the W1 wireframe before building the screen.
 
@@ -149,6 +154,10 @@ Done when:
 - [x] Invalid input shows a message next to the field and blocks submit
 - [x] A valid submit shows a success message
 - [x] A full event shows "Event full" and disables the form
+
+Note (2026-11-24): rebuilt from the W2 wireframe. The phone field is gone, number
+of places and needs were added, and a success opens W3 with a banner. The risk
+below is closed.
 
 Risk: the form fields (full name, email, phone) are guessed. Mitigation: check
 them against the W2 wireframe before building the form.
@@ -168,6 +177,9 @@ Done when:
 - [x] No changes nothing
 - [x] An empty list shows a message
 
+Note (2026-11-24): rebuilt from the W3 wireframe. The list is a table, and the
+dialog's buttons are "Keep registration" (No) and "Cancel registration" (Yes).
+
 ---
 
 ### Phase 6 — Navigation · Sun 29 Nov
@@ -180,6 +192,9 @@ Artifacts:
 Done when:
 - [x] W1 → W2 → W3 → W1 works
 - [x] Every screen has a way back
+
+Note (2026-11-24): a shared navigation bar replaced the separate buttons, and W4
+was added to it.
 
 ---
 
@@ -215,8 +230,8 @@ Artifacts:
 - `create-event-view.fxml` and its controller, `model/EventValidator.java`
 
 Done when:
-- [ ] Invalid input shows a message next to each wrong field and nothing typed is lost
-- [ ] A published event shows a success message and appears on Browse Events
+- [x] Invalid input shows a message next to each wrong field and nothing typed is lost
+- [x] A published event shows a success message and appears on Browse Events
 
 Note (2026-11-24): the brief does not require W4. It was added so that the app
 matches the wireframes. Scenario 2 is not implemented.
