@@ -24,6 +24,19 @@ Entries are listed newest first.
 
 ---
 
+## INC-017 · 2026-11-24 · A check command hid its own error
+
+- **Phase:** 7 (End-to-end check)
+- **Status:** resolved
+- **What happened:** the command that ran the Phase 7 checklist also contained a
+  leftover `git` command with a wrong path and its error output discarded.
+- **Impact:** none. It changed nothing and no result depended on it.
+- **Cause:** the follow-up of INC-012 (do not hide errors) was not applied.
+- **Resolution:** the leftover command is not used any more.
+- **Verified by:** the checklist's own output (25 of 25) and `git status`, which
+  showed no changes.
+- **Follow-up:** none.
+
 ## INC-016 · 2026-11-24 · W3 table covered its last row; stale checks failed
 
 - **Phase:** 5 (W3 My registrations), reopened

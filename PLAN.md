@@ -51,6 +51,8 @@ verify. Those are your calls.
 
 - **Nothing beyond the brief is built.** Extra features cost time before the
   deadline and are not graded. Suggestions go in a separate list instead.
+  Note (2026-11-24): W4 (Phase 9) is the one exception, added at the developer's
+  request so that the app matches the wireframes.
 - **Only JDK 21 may be needed to run it.** The marker runs it from the README.
   Keep to the Maven Wrapper and the two JavaFX modules.
 
@@ -207,6 +209,9 @@ Artifacts:
 
 Done when:
 - [ ] Every requirement in §1 is ticked from a real run
+
+Note (2026-11-24): the "Submit" row cannot be shown by a run. It is confirmed at
+submission, so this phase closes on the other seven rows.
 
 ---
 
