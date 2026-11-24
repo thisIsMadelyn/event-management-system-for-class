@@ -3,8 +3,12 @@
 A JavaFX desktop app for the HCI course (deliverable 3). It implements one main scenario end to end.
 Solo coursework; the output is the source code, project files and run instructions.
 
-**Active phases:** 7
-**Open:** 8 (final README pass and the launch check from the README)
+**Active phases:** 2, 3, 4, 5, 6
+**Open:** 7 (end-to-end check), 8 (final README pass and the launch check from the README)
+
+Note (2026-11-24): Phases 2–6 reopened to align W1–W3 with the report (INC-007).
+Ticked boxes record the earlier build.
+
 **Deadline:** Sunday 6 December 2026, <time + timezone>
 **Target completion:** Wednesday 2 December 2026 (4 days of buffer)
 

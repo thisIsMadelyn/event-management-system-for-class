@@ -24,6 +24,80 @@ Entries are listed newest first.
 
 ---
 
+## INC-010 · 2026-11-24 · Small tool failures during the audit and its follow-up
+
+- **Phase:** audit before Phase 7 (23 Nov) and its follow-up (24 Nov)
+- **Status:** resolved
+- **What happened:** several commands failed or gave incomplete output:
+  - the PDF of the brief could not be shown as images (`pdftoppm is not
+    installed`), and the first text extraction dropped the Greek letters
+  - an `ls` command used an option that does not exist (`--time-sort`)
+  - scripts that printed the report and the audit notes used the Windows
+    console encoding (cp1253). Greek text came out garbled, and one script
+    stopped with `UnicodeEncodeError: 'charmap' codec can't encode character`
+    before it reached the audit summary.
+- **Impact:** none on the app. On 24 Nov the audit was first summarised without
+  its final summary, and the advice on adding tests wrongly said that JUnit
+  would be a new dependency. JUnit is already in `pom.xml` with test scope.
+- **Cause:** a missing tool, a mistyped option, and Python's `-I` option, which
+  ignores the setting that switches its output to UTF-8.
+- **Resolution:** the brief was read with `pdftotext` set to UTF-8, and the
+  scripts were run again with Python's `-X utf8` option. The audit notes were
+  read again in full and the mistake was corrected with the developer.
+- **Verified by:** the brief, the report and the audit summary were all read
+  with their Greek text intact.
+- **Follow-up:** none.
+
+## INC-009 · 2026-11-23 · UI tests read a hidden list row
+
+- **Phase:** audit before Phase 7
+- **Status:** resolved: the test was wrong, not the app
+- **What happened:** the first run of the new UI tests failed on checks of W1
+  and W3 that depended on reading list rows. For example, clicking "Tech Careers
+  Fair" seemed to open "UX Design Workshop". 10 of 35 UI tests did not pass.
+- **Impact:** none on the app. It briefly looked as if W1 opened the wrong event.
+- **Cause:** JavaFX's `ListView` keeps a hidden spare cell with index -1. The
+  test's row lookup returned it along with the real rows.
+- **Resolution:** the test now skips cells that are hidden or have a negative
+  index. No app code was changed.
+- **Verified by:** two further runs gave identical results, with 5 of 35 UI
+  tests failing. Those 5 are real problems in the app, not test errors.
+- **Follow-up:** the 5 problems are handled with INC-007: duplicate
+  registration, right-click opening an event, search lost on Back, W2 cut off in
+  a small window, and phone numbers stored with spaces.
+
+## INC-008 · 2026-11-23 · Oversized shell command rejected
+
+- **Phase:** audit before Phase 7
+- **Status:** resolved
+- **What happened:** one long shell command meant to create all the test files
+  failed with ``unexpected EOF while looking for matching `'' ``.
+- **Impact:** none. The shell rejected the command before running any of it.
+- **Cause:** not confirmed. Most likely quoting inside the very long command.
+- **Resolution:** the test files were written one at a time instead.
+- **Verified by:** all the files were created and the tests compiled and ran.
+- **Follow-up:** none.
+
+## INC-007 · 2026-11-23 · Screens built without checking the wireframes
+
+- **Phase:** 3 to 6, found in the audit before Phase 7
+- **Status:** open
+- **What happened:** an audit compared the app with the project report. The app
+  meets the brief's minimum list, but only 1 of 21 checks against the report's
+  requirements, main scenario and wireframes passed. W1 has no categories or
+  filters, W2 asks for a phone number that the report does not mention and has
+  no number of places, W3 is not a table, and there is no shared navigation bar.
+- **Impact:** the brief grades consistency from the personas through to the
+  implementation, so the app cannot be submitted as it is.
+- **Cause:** `PLAN.md` named the risk in Phases 3 and 4 and said to check the
+  wireframes first. That was not done, and the screens were built from guesses.
+- **Resolution:** none yet. The developer decided on 2026-11-24 to align W1, W2
+  and W3 with the report before Phase 7. The organizer screen (W4) stays out,
+  because only the second scenario needs it.
+- **Verified by:** not verified.
+- **Follow-up:** run the same checks again after the screens are rebuilt. At
+  most 20 of 21 can pass, because one of them checks for W4.
+
 ## INC-006 · 2026-11-22 · Registration not reachable in the running app
 
 - **Phase:** 5 (W3 My registrations), found during manual testing
