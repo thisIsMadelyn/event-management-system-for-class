@@ -32,6 +32,23 @@ badges of either kind. Changes that are neither get a plain bullet.
 
 ---
 
+## Session [2026-11-24-2006]
+
+- **Start status:** `78c50a9` with the previous wrap-up's docs commit (`4b845fe`,
+  amended before its push), Phase 8 active.
+- **End status:** work at `48c38fc`. Phase 8 is closed by the developer's decision
+  on launches on the development computer: from a fresh clone with empty Maven
+  caches and a minimal PATH, the README's Windows command opened the app in
+  PowerShell, and then in Command Prompt. All phases are closed. Still open:
+  - The README has not been tried on another computer, on macOS or on Linux.
+  - The "Submit" row of PLAN §1 is confirmed at submission.
+- **Badges:**
+  - 🐛 Bug fix — the README run command failed in PowerShell; README and
+    `CLAUDE.md` now use `.\mvnw.cmd` (`365b959`)
+  - INC-018 and INC-019 logged and resolved (`09b0a2c`)
+  - README status changed to complete (`48c38fc`)
+  - PLAN ticks: Phase 8 complete, no active phase (this wrap-up's docs commit)
+
 ## Session [2026-11-24-1730]
 
 - **Start status:** `5bc2203`, tree clean, Phase 7 active and Phase 8 open.

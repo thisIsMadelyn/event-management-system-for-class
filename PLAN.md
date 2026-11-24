@@ -3,7 +3,7 @@
 A JavaFX desktop app for the HCI course (deliverable 3). It implements one main scenario end to end.
 Solo coursework; the output is the source code, project files and run instructions.
 
-**Active phases:** 8
+**Active phases:** none
 **Open:** none
 
 Note (2026-11-24): Phases 2–6 reopened to align W1–W3 with the report (INC-007).
@@ -223,7 +223,12 @@ Artifacts:
 - `README.md` — requirements, run commands, description of S1
 
 Done when:
-- [ ] Someone with only JDK 21 installed can launch the app from the README
+- [x] Someone with only JDK 21 installed can launch the app from the README
+
+Note (2026-11-24): closed by the developer's decision on launches on the
+development computer, with a minimal PATH, `JAVA_HOME` set to JDK 21 and empty
+Maven caches to start with, in PowerShell and Command Prompt. Not tried on
+another computer, on macOS or on Linux.
 
 ---
 
