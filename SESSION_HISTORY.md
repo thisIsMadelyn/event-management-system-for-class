@@ -32,6 +32,23 @@ badges of either kind. Changes that are neither get a plain bullet.
 
 ---
 
+## Session [2026-11-24-1730]
+
+- **Start status:** `5bc2203`, tree clean, Phase 7 active and Phase 8 open.
+- **End status:** work at `78c50a9`. Phase 7 is closed: a fresh clone of the public
+  repository launched with `./mvnw.cmd clean javafx:run`, and its app passed
+  25 of 25 checks against PLAN §1, with a screenshot of each screen. The
+  developer had also confirmed W1 to W4 by hand, before the last style fix. Still
+  open:
+  - **Phase 8** (README) is next. The launch check on a machine with only JDK 21
+    is not done.
+  - The "Submit" row of §1 is confirmed at submission, as noted in Phase 7.
+- **Badges:**
+  - 🐛 Bug fix — the W1 scroll bar no longer touches the View details buttons
+    (`78c50a9`)
+  - PLAN notes on W4 and on the "Submit" row; INC-017 logged (`1602431`)
+  - PLAN ticks: Phase 7 complete (this wrap-up's docs commit)
+
 ## Session [2026-11-24-1548]
 
 - **Start status:** `2a887c8`, tree clean, Phase 7 active and Phase 8 open. An
