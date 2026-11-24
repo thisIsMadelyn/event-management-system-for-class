@@ -24,6 +24,20 @@ Entries are listed newest first.
 
 ---
 
+## INC-015 · 2026-11-24 · Narrow window clipped again by the third bar button
+
+- **Phase:** W4 Create event, added on the developer's request
+- **Status:** resolved
+- **What happened:** adding Create Event to the navigation bar made the bar too
+  wide again for a 706-pixel window, so the scrollbar's edge was cut off.
+- **Impact:** none at 1280x800, the size in NFR7. Same fault as INC-014, but
+  smaller (about 12 pixels). The W4 check passed and did not catch it.
+- **Cause:** the bar's smallest width grew with the third button.
+- **Resolution:** the app name may now shrink further and wraps onto three
+  lines. A check that the screen is not wider than the window was added.
+- **Verified by:** 78 W4, 51 W2 and 139 W1 checks passed on the final build.
+- **Follow-up:** none.
+
 ## INC-014 · 2026-11-24 · Right side of the window cut off when narrow
 
 - **Phase:** 4 (W2) and 6 (Navigation), reopened
