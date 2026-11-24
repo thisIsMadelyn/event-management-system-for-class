@@ -57,6 +57,15 @@ public final class Navigator {
         bar.highlightRegistrations();
     }
 
+    /** W3 My registrations, with a message about what just happened. */
+    public static void showRegistrations(String message) {
+        FXMLLoader loader = load("registrations-view.fxml");
+        RegistrationsController controller = loader.getController();
+        controller.showMessage(message);
+        root.setCenter(loader.getRoot());
+        bar.highlightRegistrations();
+    }
+
     private static FXMLLoader load(String fxml) {
         FXMLLoader loader = new FXMLLoader(Navigator.class.getResource(fxml));
         try {

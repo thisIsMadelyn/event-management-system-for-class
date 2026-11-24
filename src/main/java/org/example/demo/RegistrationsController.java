@@ -57,10 +57,15 @@ public class RegistrationsController {
         if (confirm.showAndWait().orElse(no) == yes) {
             DataStore.getInstance().cancel(registration);
             items.remove(registration);
-            feedbackLabel.setText("Your registration for " + title + " was cancelled.");
-            feedbackLabel.setVisible(true);
-            feedbackLabel.setManaged(true);
+            showMessage("Your registration for " + title + " was cancelled.");
         }
+    }
+
+    /** Shows a message in the banner above the list. */
+    void showMessage(String message) {
+        feedbackLabel.setText(message);
+        feedbackLabel.setVisible(true);
+        feedbackLabel.setManaged(true);
     }
 
     /** One row: event title, date and location, the name registered with, and a Cancel button. */

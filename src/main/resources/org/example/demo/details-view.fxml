@@ -2,46 +2,82 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<!-- W2 Event details and registration -->
-<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.demo.DetailsController"
-      spacing="12" styleClass="screen">
-    <padding>
-        <Insets top="20" right="24" bottom="20" left="24"/>
-    </padding>
+<!-- W2 Event details and registration. Scrolls when the window is small. -->
+<ScrollPane xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.demo.DetailsController"
+            fitToWidth="true" focusTraversable="false" styleClass="scroll-pane,event-scroll">
+    <HBox spacing="60" alignment="TOP_LEFT">
+        <padding>
+            <Insets top="18" right="60" bottom="28" left="60"/>
+        </padding>
 
-    <Button fx:id="backButton" text="&lt; Back to Browse Events" onAction="#onBack"/>
+        <!-- Event details -->
+        <VBox spacing="12" minWidth="240" prefWidth="520" HBox.hgrow="ALWAYS">
+            <Button fx:id="backButton" text="&lt; Back to Browse Events" styleClass="button,secondary"
+                    onAction="#onBack"/>
+            <Label fx:id="titleLabel" wrapText="true" styleClass="screen-title">
+                <VBox.margin>
+                    <Insets top="12"/>
+                </VBox.margin>
+            </Label>
+            <Label fx:id="categoryLabel" styleClass="category-tag"/>
+            <VBox spacing="6">
+                <Label fx:id="dateLabel" wrapText="true"/>
+                <Label fx:id="locationLabel" wrapText="true"/>
+                <Label fx:id="spacesLabel" wrapText="true"/>
+            </VBox>
+            <Label text="About this event">
+                <VBox.margin>
+                    <Insets top="16"/>
+                </VBox.margin>
+            </Label>
+            <Label fx:id="descriptionLabel" wrapText="true" maxWidth="Infinity" styleClass="description-box"/>
+        </VBox>
 
-    <Label fx:id="titleLabel" styleClass="screen-title"/>
-    <VBox spacing="4" styleClass="event-details">
-        <Label fx:id="dateLabel"/>
-        <Label fx:id="locationLabel"/>
-        <Label fx:id="seatsLabel"/>
-    </VBox>
-    <Label fx:id="descriptionLabel" wrapText="true"/>
+        <!-- Registration form -->
+        <VBox spacing="10" minWidth="360" prefWidth="580" HBox.hgrow="ALWAYS" styleClass="form-card">
+            <Label text="Register for this event" styleClass="screen-title"/>
+            <Label text="* Required field"/>
+            <Label fx:id="feedbackLabel" styleClass="feedback,feedback-error" maxWidth="Infinity"
+                   visible="false" managed="false" wrapText="true"/>
 
-    <Separator/>
+            <VBox fx:id="form" spacing="6">
+                <Label text="Full name *"/>
+                <TextField fx:id="fullNameField" styleClass="text-field,form-field"
+                           accessibleText="Full name, required"/>
+                <Label fx:id="fullNameError" styleClass="field-error" visible="false" managed="false" wrapText="true"/>
 
-    <Label text="Register" styleClass="section-title"/>
-    <VBox fx:id="form" spacing="6" maxWidth="420">
-        <Label text="Full name" labelFor="$fullNameField"/>
-        <TextField fx:id="fullNameField"/>
-        <Label fx:id="fullNameError" styleClass="field-error" visible="false" managed="false" wrapText="true"/>
+                <Label text="Email address *"/>
+                <TextField fx:id="emailField" styleClass="text-field,form-field"
+                           accessibleText="Email address, required"/>
+                <Label fx:id="emailError" styleClass="field-error" visible="false" managed="false" wrapText="true"/>
 
-        <Label text="Email" labelFor="$emailField"/>
-        <TextField fx:id="emailField" promptText="name@example.com"/>
-        <Label fx:id="emailError" styleClass="field-error" visible="false" managed="false" wrapText="true"/>
+                <Label text="Number of places *"/>
+                <ComboBox fx:id="placesBox" prefWidth="240" styleClass="combo-box,form-field"
+                          accessibleText="Number of places, required"/>
+                <Label fx:id="placesError" styleClass="field-error" visible="false" managed="false" wrapText="true"/>
 
-        <Button fx:id="registerButton" text="Register" defaultButton="true" onAction="#onRegister">
-            <VBox.margin>
-                <Insets top="8"/>
-            </VBox.margin>
-        </Button>
-    </VBox>
+                <Label text="Dietary or access needs (optional)"/>
+                <TextArea fx:id="needsArea" prefRowCount="3" wrapText="true"
+                          accessibleText="Dietary or access needs, optional"/>
+            </VBox>
 
-    <Label fx:id="feedbackLabel" styleClass="feedback" visible="false" managed="false" wrapText="true"/>
-</VBox>
+            <HBox spacing="20">
+                <VBox.margin>
+                    <Insets top="14"/>
+                </VBox.margin>
+                <Button fx:id="confirmButton" text="Confirm registration" defaultButton="true"
+                        styleClass="button,primary,form-button" onAction="#onConfirm"/>
+                <Button fx:id="cancelButton" text="Cancel" styleClass="button,secondary,form-button"
+                        onAction="#onBack"/>
+            </HBox>
+        </VBox>
+    </HBox>
+</ScrollPane>
