@@ -178,6 +178,12 @@
     -fx-padding: 0;
 }
 
+/* Keeps the scroll bar, when there is one, off the View details buttons. */
+#eventScroll > .scroll-bar:vertical {
+    -fx-padding: 0 0 0 10;
+    -fx-background-insets: 0 0 0 10;
+}
+
 .event-row {
     -fx-min-height: 68;
     -fx-padding: 10 14;
