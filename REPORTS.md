@@ -24,6 +24,20 @@ Entries are listed newest first.
 
 ---
 
+## INC-012 · 2026-11-24 · Test launcher run before it existed
+
+- **Phase:** 6 (Navigation), reopened
+- **Status:** resolved
+- **What happened:** the command that checks the navigation bar tried to start
+  its launcher class before creating it. The error was hidden, because that
+  command discarded its error output and ignored the failure.
+- **Impact:** none on the app. No check ran in that first attempt.
+- **Cause:** the commands were written in the wrong order.
+- **Resolution:** the same script then created and compiled the launcher and ran
+  the checks.
+- **Verified by:** that run reported 28 of 28 checks passed.
+- **Follow-up:** do not hide errors in check commands.
+
 ## INC-011 · 2026-11-24 · Oversized shell command rejected again
 
 - **Phase:** 2 (Data), reopened
