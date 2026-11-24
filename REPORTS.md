@@ -24,6 +24,26 @@ Entries are listed newest first.
 
 ---
 
+## INC-013 · 2026-11-24 · W1 checks stopped early and missed a resize
+
+- **Phase:** 3 (W1 Browse events), reopened
+- **Status:** resolved: the checks were wrong, not the app
+- **What happened:** two problems in the W1 checks:
+  - the first run stopped with a `NullPointerException` because the event list
+    could not be found after going back to W1
+  - the small-window screenshot showed the normal window size, so the small
+    window had not been checked at all
+- **Impact:** none on the app. The same screenshots did show one real fault:
+  the two dropdowns were grey, where the wireframe has them white.
+- **Cause:** test timing. JavaFX adds a scroll pane's content to the scene only
+  after layout, and a resize is not applied until a later frame. The grey came
+  from the style for selected list rows, which also applied to the dropdowns.
+- **Resolution:** the check now lays out the screen before each lookup and waits
+  a second after resizing. The dropdown style was corrected in `app.css`.
+- **Verified by:** 139 of 139 checks passed, with the small window measured at
+  886x562, and the new screenshots show white dropdowns.
+- **Follow-up:** none.
+
 ## INC-012 · 2026-11-24 · Test launcher run before it existed
 
 - **Phase:** 6 (Navigation), reopened
