@@ -33,7 +33,7 @@ From the project folder:
 **Windows**
 
 ```
-mvnw.cmd clean javafx:run
+.\mvnw.cmd clean javafx:run
 ```
 
 **macOS / Linux**

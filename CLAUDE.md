@@ -107,8 +107,8 @@ The only entry points. Keep them working. They need `JAVA_HOME` pointing to
 JDK 21.
 
 ```
-mvnw.cmd clean javafx:run      build and launch the app (Windows; ./mvnw on macOS/Linux)
-mvnw.cmd clean compile         compile only
+.\mvnw.cmd clean javafx:run    build and launch the app (Windows; ./mvnw on macOS/Linux)
+.\mvnw.cmd clean compile       compile only
 ```
 
 If a command does not exist yet, add it to `pom.xml` rather than documenting a
