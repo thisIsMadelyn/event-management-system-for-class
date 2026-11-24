@@ -24,6 +24,24 @@ Entries are listed newest first.
 
 ---
 
+## INC-014 · 2026-11-24 · Right side of the window cut off when narrow
+
+- **Phase:** 4 (W2) and 6 (Navigation), reopened
+- **Status:** resolved
+- **What happened:** in a 706x462 window the right side of W2 was cut off and
+  could not be scrolled to. Part of the navigation bar was also cut off. The
+  first W2 check missed it, because it only looked at the Confirm button.
+- **Impact:** at widths under about 870 pixels, part of the form and the
+  scrollbar could not be reached. 1280x800, the size in NFR7, was not affected.
+- **Cause:** the navigation bar had fixed minimum widths. JavaFX lays the whole
+  window out at least as wide as the widest minimum.
+- **Resolution:** the bar's widths are now preferred widths with smaller
+  minimums, so it shrinks. The check now covers both scrollbars, the Cancel
+  button and the right edge of the fields.
+- **Verified by:** all 51 W2 checks and 139 W1 checks passed on the final build,
+  and the screenshots show both scrollbars in the small window.
+- **Follow-up:** none.
+
 ## INC-013 · 2026-11-24 · W1 checks stopped early and missed a resize
 
 - **Phase:** 3 (W1 Browse events), reopened
