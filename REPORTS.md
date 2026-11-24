@@ -24,6 +24,23 @@ Entries are listed newest first.
 
 ---
 
+## INC-011 · 2026-11-24 · Oversized shell command rejected again
+
+- **Phase:** 2 (Data), reopened
+- **Status:** resolved, cause unconfirmed
+- **What happened:** one long shell command meant to write all the data model
+  files failed with ``unexpected EOF while looking for matching `'' ``, the same
+  error as INC-008. The compile started alongside it reported success, but it
+  had compiled the old code.
+- **Impact:** none. The shell rejected the command before running any of it.
+  The compile result was misleading until it was checked.
+- **Cause:** not confirmed, as in INC-008. The repeat happened because the
+  lesson from INC-008 was not applied.
+- **Resolution:** the files were written one at a time instead.
+- **Verified by:** `git status` showed no changes after the failure. The project
+  was compiled again after the files were written.
+- **Follow-up:** write source files one at a time, never in one shell command.
+
 ## INC-010 · 2026-11-24 · Small tool failures during the audit and its follow-up
 
 - **Phase:** audit before Phase 7 (23 Nov) and its follow-up (24 Nov)
