@@ -4,6 +4,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.layout.BorderPane;
 import org.example.demo.model.Event;
+import org.example.demo.model.EventSearch;
 
 import java.io.IOException;
 import java.io.UncheckedIOException;
@@ -16,7 +17,18 @@ public final class Navigator {
     private static BorderPane root;
     private static MainController bar;
 
+    /** The last search in W1, kept so that coming back to W1 does not lose it. */
+    private static EventSearch.Criteria browseCriteria = EventSearch.Criteria.ALL;
+
     private Navigator() {
+    }
+
+    static EventSearch.Criteria getBrowseCriteria() {
+        return browseCriteria;
+    }
+
+    static void setBrowseCriteria(EventSearch.Criteria criteria) {
+        browseCriteria = criteria;
     }
 
     public static void init(BorderPane mainRoot, MainController mainController) {
