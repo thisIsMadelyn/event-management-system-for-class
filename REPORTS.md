@@ -24,6 +24,41 @@ Entries are listed newest first.
 
 ---
 
+## INC-019 · 2026-11-24 · Launch check wrote its logs to the wrong file
+
+- **Phase:** 8 (README)
+- **Status:** resolved
+- **What happened:** the check of the INC-018 fix exited with code 1, because
+  `tail` could not find the logs. Both launches had written to one file with a
+  literal `$sh` in its name, so the second overwrote the first.
+- **Impact:** the full log of the PowerShell launch is lost. Its window and exit
+  code had been printed separately. The repository was not affected.
+- **Cause:** wrong escaping of `\$sh` in the command that started the check.
+- **Resolution:** none needed. The surviving `cmd` log was read.
+- **Verified by:** the printed results of both launches and `BUILD SUCCESS` in the
+  `cmd` log.
+- **Follow-up:** none.
+
+## INC-018 · 2026-11-24 · README run command fails in PowerShell
+
+- **Phase:** 8 (README)
+- **Status:** resolved
+- **What happened:** `mvnw.cmd clean javafx:run`, as the README says, fails in
+  PowerShell with `The term 'mvnw.cmd' is not recognized`. The first Phase 8 run
+  also failed in `cmd`, with `'mvnw.cmd' is not recognized`.
+- **Impact:** someone following the README in PowerShell cannot start the app.
+  Earlier launches reported as "the README command" had used `.\mvnw.cmd` or
+  `./mvnw.cmd`, so they did not show this.
+- **Cause:** PowerShell does not run files from the current folder without `.\`.
+  The `cmd` failure came only from the test session, which sets
+  `NoDefaultCurrentDirectoryInExePath`. Windows does not set it by default.
+- **Resolution:** the Windows commands in the README and `CLAUDE.md` are now
+  `.\mvnw.cmd`. The tests were run without that variable.
+- **Verified by:** in a fresh clone, the command read from the README itself
+  opened the app and exited with code 0, in PowerShell (empty Maven caches) and
+  then in `cmd` (the caches just filled). Same computer, with JDK 21 set up.
+- **Follow-up:** the launch on another computer is not done.
+
 ## INC-017 · 2026-11-24 · A check command hid its own error
 
 - **Phase:** 7 (End-to-end check)
