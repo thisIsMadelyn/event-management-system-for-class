@@ -183,7 +183,7 @@ Entries are listed newest first.
 ## INC-007 · 2026-11-23 · Screens built without checking the wireframes
 
 - **Phase:** 3 to 6, found in the audit before Phase 7
-- **Status:** open
+- **Status:** resolved on 2026-11-24
 - **What happened:** an audit compared the app with the project report. The app
   meets the brief's minimum list, but only 1 of 21 checks against the report's
   requirements, main scenario and wireframes passed. W1 has no categories or
@@ -193,14 +193,19 @@ Entries are listed newest first.
   implementation, so the app cannot be submitted as it is.
 - **Cause:** `PLAN.md` named the risk in Phases 3 and 4 and said to check the
   wireframes first. That was not done, and the screens were built from guesses.
-- **Resolution:** none yet. The developer decided on 2026-11-24 to align W1, W2
-  and W3 with the report before Phase 7. The organizer screen (W4) stays out,
+- **Resolution:** the data model, navigation bar, W1, W2 and W3 were rebuilt from
+  the report and its wireframes. The developer decided on 2026-11-24 to do this
+  before Phase 7. The organizer screen (W4) stays out,
   because only the second scenario needs it. Correction (2026-11-24): the
   developer later asked for W4, so it was added.
-- **Verified by:** not verified.
-- **Follow-up:** run the same checks again after the screens are rebuilt. At
-  most 20 of 21 can pass, because one of them checks for W4. Correction
-  (2026-11-24): W4 now exists, so that check no longer limits the result.
+- **Verified by:** the updated tests, run twice with identical results: 86 of 86
+  passed, including 21 of 21 report checks and 10 new ones. The phone tests were
+  replaced, because the field is gone, and some checks were made stricter. The
+  tests also failed as expected when four faults were added on purpose to a
+  throwaway copy.
+- **Follow-up:** the tests cover what they were written for, not every detail of
+  the wireframes. FR19 (places taken, for the organizer) is not implemented, as
+  no wireframe shows it. The tests are kept outside the repository.
 
 ## INC-006 · 2026-11-22 · Registration not reachable in the running app
 
