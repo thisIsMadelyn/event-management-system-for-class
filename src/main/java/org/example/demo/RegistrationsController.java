@@ -40,11 +40,6 @@ public class RegistrationsController {
         registrationList.setPlaceholder(empty);
     }
 
-    @FXML
-    private void onBack() {
-        Navigator.showBrowse();
-    }
-
     private void onCancel(Registration registration) {
         String title = registration.getEvent().getTitle();
         ButtonType yes = new ButtonType("Yes, cancel it", ButtonBar.ButtonData.OK_DONE);

@@ -87,11 +87,6 @@ public class DetailsController {
         Navigator.showBrowse();
     }
 
-    @FXML
-    private void onMyRegistrations() {
-        Navigator.showRegistrations();
-    }
-
     /** Shows or clears one field's error. Returns true when the field is valid. */
     private boolean showError(TextField field, Label errorLabel, String message) {
         boolean valid = message == null;

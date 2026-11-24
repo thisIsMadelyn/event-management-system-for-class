@@ -52,11 +52,6 @@ public class BrowseController {
         });
     }
 
-    @FXML
-    private void onMyRegistrations() {
-        Navigator.showRegistrations();
-    }
-
     /** One row: title on top, then date and time, location and seats. Clicking it opens W2. */
     private static class EventCell extends ListCell<Event> {
         EventCell() {

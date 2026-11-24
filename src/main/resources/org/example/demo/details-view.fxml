@@ -5,8 +5,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
 <!-- W2 Event details and registration -->
@@ -16,11 +14,7 @@
         <Insets top="20" right="24" bottom="20" left="24"/>
     </padding>
 
-    <HBox alignment="CENTER_LEFT" spacing="12">
-        <Button fx:id="backButton" text="← Back to events" onAction="#onBack"/>
-        <Region HBox.hgrow="ALWAYS"/>
-        <Button fx:id="myRegistrationsButton" text="My registrations" onAction="#onMyRegistrations"/>
-    </HBox>
+    <Button fx:id="backButton" text="&lt; Back to Browse Events" onAction="#onBack"/>
 
     <Label fx:id="titleLabel" styleClass="screen-title"/>
     <VBox spacing="4" styleClass="event-details">

@@ -13,10 +13,10 @@ public class EventApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader loader = new FXMLLoader(EventApplication.class.getResource("main-view.fxml"));
         BorderPane root = loader.load();
-        Navigator.init(root);
+        Navigator.init(root, loader.getController());
         Navigator.showBrowse();
 
-        Scene scene = new Scene(root, 1000, 700);
+        Scene scene = new Scene(root, 1280, 800);
         scene.getStylesheets().add(EventApplication.class.getResource("app.css").toExternalForm());
         stage.setTitle("Event Management System");
         stage.setScene(scene);
