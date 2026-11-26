@@ -108,8 +108,9 @@ public class RegistrationsController {
         ((ButtonBar) pane.lookup(".button-bar")).setButtonOrder(ButtonBar.BUTTON_ORDER_NONE);
         Button keepButton = (Button) pane.lookupButton(keep);
         keepButton.setDefaultButton(true);
-        keepButton.getStyleClass().add("primary");
-        pane.lookupButton(cancel).getStyleClass().add("secondary");
+        // P7 styling: Keep is outlined, Cancel registration is filled. Keep stays the default (Enter).
+        keepButton.getStyleClass().add("secondary");
+        pane.lookupButton(cancel).getStyleClass().add("primary");
 
         return confirm.showAndWait().orElse(keep) == cancel;
     }
@@ -130,7 +131,7 @@ public class RegistrationsController {
             }
             Button cancel = new Button("Cancel registration");
             cancel.setAccessibleText("Cancel registration for " + registration.getEvent().getTitle());
-            cancel.getStyleClass().add("link-button");
+            cancel.getStyleClass().add("secondary");
             cancel.setOnAction(e -> onCancel(registration));
             setGraphic(cancel);
         }

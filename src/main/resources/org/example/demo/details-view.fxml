@@ -20,7 +20,7 @@
 
         <!-- Event details -->
         <VBox spacing="12" minWidth="240" prefWidth="520" HBox.hgrow="ALWAYS">
-            <Button fx:id="backButton" text="&lt; Back to Browse Events" styleClass="button,secondary"
+            <Button fx:id="backButton" text="&lt; Back to Browse Events" styleClass="button,back-link"
                     onAction="#onBack"/>
             <Label fx:id="titleLabel" wrapText="true" styleClass="screen-title">
                 <VBox.margin>
@@ -33,7 +33,7 @@
                 <Label fx:id="locationLabel" wrapText="true"/>
                 <Label fx:id="spacesLabel" wrapText="true"/>
             </VBox>
-            <Label text="About this event">
+            <Label text="About this event" styleClass="section-heading">
                 <VBox.margin>
                     <Insets top="16"/>
                 </VBox.margin>
@@ -44,27 +44,27 @@
         <!-- Registration form -->
         <VBox spacing="10" minWidth="360" prefWidth="580" HBox.hgrow="ALWAYS" styleClass="form-card">
             <Label text="Register for this event" styleClass="screen-title"/>
-            <Label text="* Required field"/>
+            <Label text="* Required field" styleClass="hint"/>
             <Label fx:id="feedbackLabel" styleClass="feedback,feedback-error" maxWidth="Infinity"
                    visible="false" managed="false" wrapText="true"/>
 
             <VBox fx:id="form" spacing="6">
-                <Label text="Full name *"/>
+                <Label text="Full name *" styleClass="field-label"/>
                 <TextField fx:id="fullNameField" styleClass="text-field,form-field"
                            accessibleText="Full name, required"/>
                 <Label fx:id="fullNameError" styleClass="field-error" visible="false" managed="false" wrapText="true"/>
 
-                <Label text="Email address *"/>
+                <Label text="Email address *" styleClass="field-label"/>
                 <TextField fx:id="emailField" styleClass="text-field,form-field"
                            accessibleText="Email address, required"/>
                 <Label fx:id="emailError" styleClass="field-error" visible="false" managed="false" wrapText="true"/>
 
-                <Label text="Number of places *"/>
+                <Label text="Number of places *" styleClass="field-label"/>
                 <ComboBox fx:id="placesBox" prefWidth="240" styleClass="combo-box,form-field"
                           accessibleText="Number of places, required"/>
                 <Label fx:id="placesError" styleClass="field-error" visible="false" managed="false" wrapText="true"/>
 
-                <Label text="Dietary or access needs (optional)"/>
+                <Label text="Dietary or access needs (optional)" styleClass="field-label"/>
                 <TextArea fx:id="needsArea" prefRowCount="3" wrapText="true"
                           accessibleText="Dietary or access needs, optional"/>
             </VBox>

@@ -24,6 +24,38 @@ Entries are listed newest first.
 
 ---
 
+## INC-026 · 2026-11-26 · Compile check ran from the wrong folder
+
+- **Phase:** 10
+- **Status:** resolved
+- **What happened:** after the W2 styling change, the compile check stopped with
+  "The term '.\mvnw.cmd' is not recognized". The build did not run at all.
+- **Impact:** none on the code. The check had to be run again.
+- **Cause:** an earlier shell command had changed into
+  `src/main/resources/org/example/demo`, and that folder carried over to the next
+  command, so `mvnw.cmd` was not found.
+- **Resolution:** the compile was run again after changing back to the project
+  folder.
+- **Verified by:** the second compile ended with exit code 0.
+- **Follow-up:** none. Later build commands change to the project folder first.
+
+## INC-025 · 2026-11-26 · Compile check failed because JAVA_HOME was not set
+
+- **Phase:** 10
+- **Status:** resolved
+- **What happened:** after the colours in `app.css` were changed,
+  `.\mvnw.cmd -q clean compile` stopped with "JAVA_HOME not found in your
+  environment".
+- **Impact:** none on the code. The compile check had to be run again.
+- **Cause:** `JAVA_HOME` is not set system-wide on the development computer, and
+  the command was run without setting it for that call. This is a known local
+  setup issue, not a problem with the project.
+- **Resolution:** the same command was run again with `JAVA_HOME` set to JDK 21
+  for that call.
+- **Verified by:** the second compile ended with exit code 0.
+- **Follow-up:** none. The README already says that `JAVA_HOME` must point to
+  JDK 21.
+
 ## INC-024 · 2026-11-26 · New figure captions numbered from 5 instead of 6
 
 - **Phase:** report (section 8, outside the repository)

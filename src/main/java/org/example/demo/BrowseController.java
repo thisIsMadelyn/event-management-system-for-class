@@ -1,6 +1,7 @@
 package org.example.demo;
 
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -9,6 +10,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import org.example.demo.model.Category;
 import org.example.demo.model.DataStore;
@@ -25,7 +27,9 @@ import java.util.Locale;
 public class BrowseController {
     private static final DateTimeFormatter DATE_FORMAT =
             DateTimeFormatter.ofPattern("EEE d MMM yyyy, HH:mm", Locale.ENGLISH);
-    private static final String SEPARATOR = "    |    ";
+    private static final String SEPARATOR = "  ·  ";
+    /** At or below this many spaces left, the badge turns red (P1 shows "1 space left" in red). */
+    private static final int FEW_SPACES = 3;
 
     @FXML private TextField searchField;
     @FXML private ComboBox<String> categoryBox;
@@ -76,22 +80,35 @@ public class BrowseController {
         setShown(eventScroll, !empty);
     }
 
-    /** One row: title, category, date and time, location and spaces left, with a button that opens W2. */
+    /** One row, as in P1: title over category, date and location, then a spaces-left badge and a button that opens W2. */
     private HBox createRow(Event event) {
-        Label text = new Label(String.join(SEPARATOR, event.getTitle(), event.getCategory().getLabel(),
-                event.getStart().format(DATE_FORMAT), event.getLocation(), spacesLeft(event)));
-        text.setWrapText(true);
-        text.setMaxWidth(Double.MAX_VALUE);
-        text.getStyleClass().add("event-row");
-        HBox.setHgrow(text, Priority.ALWAYS);
+        Label title = new Label(event.getTitle());
+        title.getStyleClass().add("event-title");
+        title.setWrapText(true);
+
+        Label meta = new Label(String.join(SEPARATOR, event.getCategory().getLabel(),
+                event.getStart().format(DATE_FORMAT), event.getLocation()));
+        meta.getStyleClass().add("event-meta");
+        meta.setWrapText(true);
+
+        VBox info = new VBox(4, title, meta);
+        info.setMaxWidth(Double.MAX_VALUE);
+        HBox.setHgrow(info, Priority.ALWAYS);
+
+        Label badge = new Label(spacesLeft(event));
+        badge.getStyleClass().addAll("spaces-badge",
+                event.getSeatsLeft() <= FEW_SPACES ? "spaces-few" : "spaces-ok");
+        badge.setMinWidth(Region.USE_PREF_SIZE);
 
         Button details = new Button("View details");
         details.setAccessibleText("View details of " + event.getTitle());
         details.getStyleClass().addAll("primary", "view-details");
-        details.setMaxHeight(Double.MAX_VALUE);
         details.setOnAction(e -> Navigator.showDetails(event));
 
-        return new HBox(20, text, details);
+        HBox row = new HBox(20, info, badge, details);
+        row.setAlignment(Pos.CENTER_LEFT);
+        row.getStyleClass().add("event-row");
+        return row;
     }
 
     private static String spacesLeft(Event event) {
