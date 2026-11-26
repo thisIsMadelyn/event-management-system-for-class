@@ -32,6 +32,23 @@ badges of either kind. Changes that are neither get a plain bullet.
 
 ---
 
+## Session [2026-11-26-2104]
+
+- **Start status:** `858ca5c`, tree clean apart from a local skill file, no
+  active phase.
+- **End status:** work at `decd3eb`, pushed. Report section 9 was checked
+  against the restyled screens: nothing in it was wrong, and two sentences were
+  added to 9.2 (outside the repository). Still open:
+  - The report's page layout and table of contents after the two sentences were
+    not checked, because pages could not be rendered here. The developer is to
+    update the fields in Word.
+  - This entry is not committed (wrap-up run with `--no-commit`).
+- **Badges:**
+  - Report section 9.2: one sentence on the prototype colours on every screen
+    (NFR4) and one on the green or red spaces-left badge (NFR5). Outside the
+    repository, no commit.
+  - INC-027 logged: Word closed with an error after the report check (`decd3eb`)
+
 ## Session [2026-11-26-2024]
 
 - **Start status:** `a8fd7e9`, tree clean apart from a local skill file, Phase 10
