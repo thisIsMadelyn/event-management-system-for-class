@@ -3,8 +3,11 @@
 A JavaFX desktop app for the HCI course (deliverable 3). It implements one main scenario end to end.
 Solo coursework; the output is the source code, project files and run instructions.
 
-**Active phases:** none
+**Active phases:** 10
 **Open:** none
+
+Note (2026-11-26): Phase 10 added and made active at the developer's request.
+The prototype has to be in colour, so the app is restyled to match it.
 
 Note (2026-11-24): Phases 2–6 reopened to align W1–W3 with the report (INC-007).
 Ticked boxes record the earlier build. Phase 9 (W4) was added on the same day
@@ -86,6 +89,8 @@ be checked against its wireframe.
 
 **Look:** plain CSS (greys, simple borders) to stay close to the low-fidelity
 wireframes.
+Note (2026-11-26): replaced by the colours of the Figma prototype (Phase 10),
+still in plain CSS.
 
 **Scope cap:** the brief's requirement list is the upper bound. Never cut: S1
 working end to end across W1, W2 and W3. Cut first: <...>
@@ -245,3 +250,24 @@ Done when:
 
 Note (2026-11-24): the brief does not require W4. It was added so that the app
 matches the wireframes. Scenario 2 is not implemented.
+
+---
+
+### Phase 10 — Prototype styling · Thu 26 Nov
+
+**Goal:** the app looks like the Figma prototype, so that the report, wireframes, prototype and app stay consistent.
+
+Artifacts:
+- `app.css` — the prototype's colours
+- FXML files and controllers, only where the prototype's layout differs from a screen
+
+Done when:
+- [ ] The navigation bar and primary buttons are blue, success banners are green and errors are red, as in the prototype
+- [ ] The spaces-left labels on W1 are green, or red when few or none are left, as in P1
+- [ ] W1, W2 and W3 match their prototype frames when put side by side
+- [ ] W4 uses the same colours, although the prototype does not include it
+- [ ] Text stays at 14px or larger (NFR5)
+- [ ] `.\mvnw.cmd clean javafx:run` opens the app and S1 works end to end
+
+Note (2026-11-26): added at the developer's request. The prototype has to be in
+colour, and the app is changed to match it.

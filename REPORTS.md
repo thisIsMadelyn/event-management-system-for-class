@@ -24,6 +24,80 @@ Entries are listed newest first.
 
 ---
 
+## INC-024 · 2026-11-26 · New figure captions numbered from 5 instead of 6
+
+- **Phase:** report (section 8, outside the repository)
+- **Status:** resolved
+- **What happened:** after the six prototype screenshots were added to the
+  report, Word numbered their captions 5 to 10, so two captions read "Figure 5".
+- **Impact:** wrong figure numbers in the report. Found before it was saved.
+- **Cause:** the caption of Figure 5 had its number typed by hand, while Figures
+  1 to 4 used Word's automatic numbering, so Word counted only four figures before
+  section 8.
+- **Resolution:** the typed "5" was replaced with an automatic number. Its text
+  and look did not change.
+- **Verified by:** the report opened in Word, fields were updated and saved as
+  PDF. The captions read Figure 1 to Figure 11 in order.
+- **Follow-up:** none.
+
+## INC-023 · 2026-11-26 · Section 8 script matched the table of contents
+
+- **Phase:** report (section 8, outside the repository)
+- **Status:** resolved
+- **What happened:** the script that fills section 8 stopped with
+  `AssertionError: instruction not found`.
+- **Impact:** none. The check stopped it before anything was written.
+- **Cause:** it looked for the first paragraph starting with "8. Prototype",
+  which is the table of contents entry, not the heading.
+- **Resolution:** it now uses the last match, which is the heading.
+- **Verified by:** the second run found the instruction and replaced it.
+- **Follow-up:** none.
+
+## INC-022 · 2026-11-26 · Figma tool call limit reached
+
+- **Phase:** Figma prototype
+- **Status:** open
+- **What happened:** while the new colour prototype was being built, Figma refused
+  further calls with "You've reached the Figma MCP tool call limit on the Starter
+  plan".
+- **Impact:** frames P5 to P9 and the prototype links were built but not checked
+  in a screenshot. The screenshots for the report could not be taken this way.
+- **Cause:** the limit on tool calls of the free Figma plan.
+- **Resolution:** the developer exported the screenshots from Figma by hand.
+- **Verified by:** not verified. P5 to P9 still need to be looked at by hand.
+- **Follow-up:** check P5 to P9 and click through the flow in Present mode.
+
+## INC-021 · 2026-11-26 · Document tools missing on the development computer
+
+- **Phase:** report and video script (outside the repository)
+- **Status:** resolved
+- **What happened:** `zip`, `pdftoppm`, LibreOffice, pandoc, the Python module
+  `defusedxml` and the npm package `docx` were not installed, so the usual
+  steps to pack, check and render Word files failed with "command not found" or
+  "No module named".
+- **Impact:** the report and the script could not be checked the usual way.
+- **Cause:** these tools are not installed. They are not needed by the app.
+- **Resolution:** files were packed with Python's `zipfile`, the XML was checked
+  with Python's `minidom`, and Word itself saved them as PDF for the check.
+  `docx` was installed in a temporary folder outside the repository.
+- **Verified by:** both files open in Word and their PDF text is as expected.
+- **Follow-up:** none.
+
+## INC-020 · 2026-11-26 · Report file locked while saving
+
+- **Phase:** report cleanup (outside the repository)
+- **Status:** resolved, cause unconfirmed
+- **What happened:** saving the cleaned report over the old one failed with
+  `Device or resource busy`.
+- **Impact:** the removal of the template instructions was not saved on the first
+  try.
+- **Cause:** not confirmed. Most likely the report was open in Word.
+- **Resolution:** the save was tried again a few minutes later and worked.
+- **Verified by:** the saved file has 9 fewer paragraphs than the backup, and the
+  same 12 images and 5 tables.
+- **Follow-up:** if the report was open in Word, close it without saving so the
+  old version does not overwrite the new one.
+
 ## INC-019 · 2026-11-24 · Launch check wrote its logs to the wrong file
 
 - **Phase:** 8 (README)
