@@ -32,6 +32,24 @@ badges of either kind. Changes that are neither get a plain bullet.
 
 ---
 
+## Session [2026-11-26-1930]
+
+- **Start status:** `336726e`, tree clean, no active phase, all phases closed.
+- **End status:** work at `6b386a2`. Most of the session was on deliverables
+  outside the repository: the report, the video script and a colour version of
+  the Figma prototype. The course confirmed that the prototype has to be in
+  colour, so Phase 10 was added to restyle the app to match it. Still open:
+  - Phase 10 is active with no box ticked. Its work is left for another session.
+  - The prototype frames P5 to P9 and its links were not checked in a
+    screenshot, because the Figma tool call limit was reached (INC-022).
+  - The video is not recorded yet.
+- **Badges:**
+  - 🆕 Addition — Phase 10 (prototype styling) added to PLAN and made active, at
+    the developer's request (`6b386a2`)
+  - INC-020 to INC-024 logged: report file locked, document tools missing, Figma
+    call limit, a script matching the table of contents, figure numbering
+    (`6b386a2`)
+
 ## Session [2026-11-24-2006]
 
 - **Start status:** `78c50a9` with the previous wrap-up's docs commit (`4b845fe`,
