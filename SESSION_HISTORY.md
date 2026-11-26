@@ -32,6 +32,30 @@ badges of either kind. Changes that are neither get a plain bullet.
 
 ---
 
+## Session [2026-11-26-2024]
+
+- **Start status:** `a8fd7e9`, tree clean apart from a local skill file, Phase 10
+  active with no box ticked.
+- **End status:** work at `3aa2e12`. Phase 10 closed: the developer ran the app
+  and compared W1 to W3 with the prototype screenshots, and checked W4's colours
+  and scenario S1 end to end. No phase is active. Still open:
+  - The bold prefixes on W2 ("Date and time:", "Location:", "Spaces left:") are
+    not bold as in P3. Left out on purpose, because it needs a controller change
+    for a small visual difference.
+  - The video and the Moodle submission are outside this repository and not done.
+- **Badges:**
+  - 🆕 Addition — the app now uses the prototype's colours: blue navigation and
+    primary buttons, green success, red errors, white cards (`3aa2e12`)
+  - 🆕 Addition — W1 rows show the title over the event details, with a
+    spaces-left badge that is green, or red at 3 or fewer (`3aa2e12`)
+  - W2 styling: link-style back button, bold section heading and field labels,
+    grey required-field hint (`3aa2e12`)
+  - The cancel dialog and the W3 table's cancel button follow P6 and P7; unused
+    link-button rules removed (`3aa2e12`)
+  - INC-025 and INC-026 logged: two compile checks that had to be run again
+    (`3aa2e12`)
+  - PLAN ticks: Phase 10, all six boxes
+
 ## Session [2026-11-26-1930]
 
 - **Start status:** `336726e`, tree clean, no active phase, all phases closed.

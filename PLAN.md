@@ -3,8 +3,11 @@
 A JavaFX desktop app for the HCI course (deliverable 3). It implements one main scenario end to end.
 Solo coursework; the output is the source code, project files and run instructions.
 
-**Active phases:** 10
+**Active phases:** none
 **Open:** none
+
+Note (2026-11-26, later): Phase 10 closed after the developer checked every
+screen against the prototype screenshots by hand. No phase is active.
 
 Note (2026-11-26): Phase 10 added and made active at the developer's request.
 The prototype has to be in colour, so the app is restyled to match it.
@@ -262,12 +265,18 @@ Artifacts:
 - FXML files and controllers, only where the prototype's layout differs from a screen
 
 Done when:
-- [ ] The navigation bar and primary buttons are blue, success banners are green and errors are red, as in the prototype
-- [ ] The spaces-left labels on W1 are green, or red when few or none are left, as in P1
-- [ ] W1, W2 and W3 match their prototype frames when put side by side
-- [ ] W4 uses the same colours, although the prototype does not include it
-- [ ] Text stays at 14px or larger (NFR5)
-- [ ] `.\mvnw.cmd clean javafx:run` opens the app and S1 works end to end
+- [x] The navigation bar and primary buttons are blue, success banners are green and errors are red, as in the prototype
+- [x] The spaces-left labels on W1 are green, or red when few or none are left, as in P1
+- [x] W1, W2 and W3 match their prototype frames when put side by side
+- [x] W4 uses the same colours, although the prototype does not include it
+- [x] Text stays at 14px or larger (NFR5)
+- [x] `.\mvnw.cmd clean javafx:run` opens the app and S1 works end to end
 
 Note (2026-11-26): added at the developer's request. The prototype has to be in
 colour, and the app is changed to match it.
+
+Note (2026-11-26, later): "few" means 3 or fewer spaces left, chosen by the
+developer because P1 only shows 1 left in red and 5 left in green. The boxes were
+ticked from the developer's own run of the app, compared with the prototype
+screenshots P1 to P4, P6 and P7. W4 has no prototype frame and was checked for
+colours only.
