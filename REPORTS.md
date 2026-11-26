@@ -24,6 +24,28 @@ Entries are listed newest first.
 
 ---
 
+## INC-027 · 2026-11-26 · Word closed with an error during the report check
+
+- **Phase:** report (section 9, outside the repository)
+- **Status:** resolved, cause unconfirmed
+- **What happened:** two sentences were added to section 9.2 of the report.
+  Word was then started without a window to open the report read-only, check
+  the new text and save a PDF copy. The check and the PDF worked, but closing
+  the document failed with "The object invoked has disconnected from its
+  clients" (RPC_E_DISCONNECTED). The Word process it had started kept running in
+  the background.
+- **Impact:** none on the report. It was opened read-only and the PDF copy was
+  written. A hidden Word process was left running.
+- **Cause:** not confirmed. Word most likely shut down or lost the connection
+  right after the PDF export. Four other hidden Word processes from earlier that
+  day were also running and may have played a part.
+- **Resolution:** the Word process started by the check was stopped by its
+  process ID. The four older ones were left alone.
+- **Verified by:** that process no longer appears in the process list. Word
+  found both new sentences in the report before the error.
+- **Follow-up:** the page layout and the table of contents after the change
+  have not been checked. The four older hidden Word processes are still running.
+
 ## INC-026 · 2026-11-26 · Compile check ran from the wrong folder
 
 - **Phase:** 10
