@@ -32,6 +32,23 @@ badges of either kind. Changes that are neither get a plain bullet.
 
 ---
 
+## Session [2026-11-28-0025]
+
+- **Start status:** `311b5dd`, the brief-me skill staged but not committed,
+  INC-028 uncommitted in `REPORTS.md`, no active phase.
+- **End status:** work at `a772248`. The brief-me skill is committed with a
+  working frontmatter. The demo video was recorded by the developer, following
+  the video script; it is not part of the repository. Still open:
+  - Editing, exporting and handing in the video.
+  - The W3 wireframe and report Figure 3 still say a confirmation email is sent.
+  - Exporting the report to PDF and the Moodle submission.
+- **Badges:**
+  - 🆕 Addition — brief-me skill (`ba63948`)
+  - 🐛 Bug fix — the skill's frontmatter opening line was `--` instead of
+    `---`, so its name and description were not read (`cfdf719`)
+  - INC-029 logged: the skill was first committed with that line still broken
+    (`a772248`)
+
 ## Session [2026-11-27-2354]
 
 - **Start status:** `311b5dd`, tree clean apart from a local skill file, no
