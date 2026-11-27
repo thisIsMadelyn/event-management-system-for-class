@@ -24,6 +24,25 @@ Entries are listed newest first.
 
 ---
 
+## INC-029 · 2026-11-28 · Skill committed with its frontmatter still broken
+
+- **Phase:** none (repository housekeeping)
+- **Status:** resolved
+- **What happened:** the first line of `.claude/skills/brief-me/SKILL.md` was
+  `--` instead of `---`. A `sed` command was meant to fix it before the commit,
+  but it only removed the line's carriage return. The file was committed and
+  pushed in `ba63948` with the line still `--`.
+- **Impact:** the skill's name and description were not read, and the pushed
+  version on `main` carried the broken line until the fix commit.
+- **Cause:** the `sed` pattern matched `--\r` but the replacement did not work
+  as intended in Git Bash. The output was checked only after the commit and
+  push, not before.
+- **Resolution:** the line was changed to `---` with a direct file edit and
+  committed in a follow-up commit.
+- **Verified by:** the file's first bytes read `---` before the follow-up
+  commit.
+- **Follow-up:** check the result of a file fix before staging it.
+
 ## INC-028 · 2026-11-27 · Word spell check of the report stopped with an error
 
 - **Phase:** report (typo check, outside the repository)
