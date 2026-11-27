@@ -24,6 +24,29 @@ Entries are listed newest first.
 
 ---
 
+## INC-028 · 2026-11-27 · Word spell check of the report stopped with an error
+
+- **Phase:** report (typo check, outside the repository)
+- **Status:** resolved, cause unconfirmed
+- **What happened:** a spell check of the whole report, run through Word with
+  the report opened read-only and no window, returned one result and then
+  stopped with "Exception from HRESULT: 0x800A1200". The Word process it had
+  started kept running in the background.
+- **Impact:** none on the report, which was opened read-only. The first check
+  gave no usable result.
+- **Cause:** not confirmed. Word's list of spelling errors for the whole document
+  failed partway through. A likely candidate is the mix of Greek text tagged as
+  English and English text tagged as Greek, which gives Word a very long list of
+  flags.
+- **Resolution:** the leftover Word process was stopped. The check was run again
+  one paragraph at a time, which worked for all but 2 paragraphs. Its process
+  was also stopped afterwards.
+- **Verified by:** the second check returned results for the whole report. No
+  real typo was found; the typos reported earlier had already been fixed in
+  another session on the same day.
+- **Follow-up:** the 2 paragraphs Word could not check, and grammar, were not
+  checked.
+
 ## INC-027 · 2026-11-26 · Word closed with an error during the report check
 
 - **Phase:** report (section 9, outside the repository)
