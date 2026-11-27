@@ -32,6 +32,21 @@ badges of either kind. Changes that are neither get a plain bullet.
 
 ---
 
+## Session [2026-11-27-2354]
+
+- **Start status:** `311b5dd`, tree clean apart from a local skill file, no
+  active phase.
+- **End status:** work at `b15d4aa`, pushed. A spell check of the report found
+  no real typos: the ones noted earlier had already been fixed in the
+  2026-11-27-2150 session. The report was not changed. Still open:
+  - Grammar, and 2 paragraphs Word could not check, were not checked.
+  - Greek text in section 10 is tagged as English, so Word underlines it. The
+    words are correct; retagging it is optional and was not done.
+  - This entry is not committed (wrap-up run with `--no-commit`).
+- **Badges:**
+  - INC-028 logged: the first Word spell check of the report stopped with an
+    error (`b15d4aa`)
+
 ## Session [2026-11-27-2150]
 
 - **Start status:** `00b9e3a`, tree clean apart from a local skill file, no
