@@ -1,4 +1,4 @@
---
+---
 name: "brief"
 description: "Use when the user pastes a project context brief or decision log and wants work to resume from the open issues rather than from scratch."
 ---
