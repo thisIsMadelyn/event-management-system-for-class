@@ -32,6 +32,25 @@ badges of either kind. Changes that are neither get a plain bullet.
 
 ---
 
+## Session [2026-11-27-2150]
+
+- **Start status:** `00b9e3a`, tree clean apart from a local skill file, no
+  active phase. This continues the 2026-11-26-1930 session after its wrap-up.
+- **End status:** no repository change apart from this entry. All work was in
+  the report, outside the repository. Still open:
+  - The W3 wireframe and report Figure 3 still say a confirmation email is sent,
+    which needs a new wireframe image.
+  - The video and the Moodle submission are not done.
+- **Badges:**
+  - 🐛 Bug fix — report: section 6 "Where it appears" mappings corrected
+    (Overbooking → W4, W2; sign-up doubt → W3) and 13 typos fixed. Outside the
+    repository, no commit.
+  - Report: table of contents rebuilt to match the pages, its template note
+    removed and its title no longer listed in it; section 10 content (10.1–10.6
+    and the 10.7 table, not the headings) translated to Greek, with a line that
+    the prompts are quoted in English. Headings stay in English, as the
+    developer decided. Outside the repository, no commit.
+
 ## Session [2026-11-26-2104]
 
 - **Start status:** `858ca5c`, tree clean apart from a local skill file, no
