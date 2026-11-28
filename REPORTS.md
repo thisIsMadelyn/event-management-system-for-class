@@ -24,6 +24,28 @@ Entries are listed newest first.
 
 ---
 
+## INC-032 · 2026-11-28 · Word refused to edit a table header as protected
+
+- **Phase:** report (section 5, outside the repository)
+- **Status:** resolved, cause unconfirmed
+- **What happened:** the developer asked for the "Thinking and feeling" and
+  "Pain point" headers of the User Journey table to swap places. Two attempts to
+  set the text of the two header cells through Word failed with "This
+  modification is not allowed because the selection is locked" (shown in
+  Greek). The report has no protection.
+- **Impact:** none. Neither attempt saved anything.
+- **Cause:** not confirmed. Word reported no document protection, the only
+  content control is the table of contents, and the XML of the header row has
+  no permission ranges, content controls or tracked changes. The error came
+  only when cell text was set directly. A find and replace inside each cell
+  worked.
+- **Resolution:** the headers were swapped with a find and replace limited to
+  each of the two cells.
+- **Verified by:** the header row reads Step, User action, Screen, Pain point,
+  Thinking and feeling. Both headers are still bold, and no Word process or lock
+  file was left.
+- **Follow-up:** none.
+
 ## INC-031 · 2026-11-28 · Skill texts in the report got a blank line after every line
 
 - **Phase:** report (section 10.2, outside the repository)
