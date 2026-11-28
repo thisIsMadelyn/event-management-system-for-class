@@ -32,6 +32,38 @@ badges of either kind. Changes that are neither get a plain bullet.
 
 ---
 
+## Session [2026-11-28-1834]
+
+- **Start status:** `25f92fd`, tree clean, no active phase.
+- **End status:** work at `f5e6d5e`. All work apart from the incident log was in
+  the report, outside the repository:
+  - a review of the AI's work against four criteria, and points for section
+    10.6, both from `REPORTS.md` and this file
+  - table of contents page numbers corrected (10.3 to 10.7 were wrong)
+  - 27 typos fixed
+  - backticks removed outside the skill texts, merged bullets in 10.6 split,
+    the three skill texts re-entered from their `SKILL.md` files with their line
+    breaks, two wording fixes, and spelling made American throughout
+
+  Checked read-only afterwards: all 29 contents entries match their pages, the
+  skill texts match their files line by line, and the report has 30 pages.
+  Still open:
+  - Empty or mismatched fields, which need the developer's content: the NFR7
+    Personas cell, the User Journey "Pain point" column (it holds feelings), the
+    missing "change in my way of working" part of 10.5, and the cover date.
+  - "cancelled" and "cancelling" kept, because the app's own messages use them.
+  - Not done, by the developer's choice: the "derivable" typo in a quoted
+    prompt, the FR10 wording, the FR-to-wireframe claim in 10.4.1, and the
+    full stops in the persona lists.
+  - The W3 wireframe and Figure 3 email, the video, the PDF export and the
+    Moodle submission.
+- **Badges:**
+  - 🐛 Bug fix — report: table of contents pages, typos and layout. Outside the
+    repository, no commit.
+  - INC-030 and INC-031 logged: a report edit that stopped and left a hidden
+    Word open, and skill texts that got a blank line after every line
+    (`f5e6d5e`)
+
 ## Session [2026-11-28-0025]
 
 - **Start status:** `311b5dd`, the brief-me skill staged but not committed,
