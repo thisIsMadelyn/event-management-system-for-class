@@ -32,6 +32,24 @@ badges of either kind. Changes that are neither get a plain bullet.
 
 ---
 
+## Session [2026-11-28-1956]
+
+- **Start status:** `36f3ba9`, tree clean, no active phase. This continues the
+  2026-11-28-1834 session after its wrap-up.
+- **End status:** work at `0832ea8`, pushed. In the report's User Journey table
+  (outside the repository), the "Pain point" and "Thinking and feeling" headers
+  swapped places, at the developer's request, so they match the columns below
+  them. The rows were not changed. Still open:
+  - The NFR7 Personas cell, the "change in my way of working" part promised in
+    10.5, and the cover date.
+  - The W3 wireframe and Figure 3 email, the video, the PDF export and the
+    Moodle submission.
+- **Badges:**
+  - 🐛 Bug fix — report: User Journey header labels swapped. Outside the
+    repository, no commit.
+  - INC-032 logged: Word refused to edit the header cells as locked, although
+    the report has no protection (`0832ea8`)
+
 ## Session [2026-11-28-1834]
 
 - **Start status:** `25f92fd`, tree clean, no active phase.
