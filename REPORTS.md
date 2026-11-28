@@ -24,6 +24,56 @@ Entries are listed newest first.
 
 ---
 
+## INC-031 · 2026-11-28 · Skill texts in the report got a blank line after every line
+
+- **Phase:** report (section 10.2, outside the repository)
+- **Status:** resolved
+- **What happened:** the three skill texts in section 10.2 were replaced with the
+  text of their `SKILL.md` files, to bring back the line breaks the report had
+  lost. Every line then came out followed by a blank line, and the report grew
+  from 30 to 34 pages.
+- **Impact:** wrong layout of the skill texts and wrong page numbers in the
+  table of contents. Found by the check that followed, before the developer
+  opened the report.
+- **Cause:** the skill texts were saved to temporary files by Python, which on
+  Windows writes line ends as `\r\n`. Each `\n` was turned into a Word line
+  break, and each `\r` became a paragraph mark, so every line got both.
+- **Resolution:** the 249 extra line breaks were removed, only inside the three
+  skill texts. Before removing them, a count confirmed that every line break in
+  that part of the report came right after a paragraph mark. The table of
+  contents page numbers were updated again.
+- **Verified by:** the report opened read-only. All three skill texts match
+  their `SKILL.md` files line by line (23, 94 and 135 lines, no differences), the
+  report is back to 30 pages, and all 29 table of contents entries match their
+  headings' pages.
+- **Follow-up:** none.
+
+## INC-030 · 2026-11-28 · Report edit stopped and left a hidden Word open
+
+- **Phase:** report (typo and layout fixes, outside the repository)
+- **Status:** resolved
+- **What happened:** a script that applied several approved changes to the
+  report through Word stopped with "the Find What text contains a Pattern Match
+  expression which is not valid". The error came from the wildcard search used
+  to split merged bullet points in section 10.6. The hidden Word process the
+  script started did not close and kept the report locked. An attempt to stop it
+  was not allowed in this session. The command given to the developer for it,
+  `Stop-Process`, failed with "command not found", because `!` commands run in
+  bash and not PowerShell. `taskkill` then reported that the process no longer
+  existed.
+- **Impact:** none of that run's changes were saved. The report on disk was
+  unchanged, and stayed locked until the hidden Word closed on its own.
+- **Cause:** the wildcard pattern was not valid for Word's search. The script
+  had no step to close the document without saving on an error, so Word was
+  left waiting, most likely on a hidden "save changes?" prompt.
+- **Resolution:** the changes were run again with a plain search in place of
+  wildcards. The script now closes the document without saving if any step
+  fails.
+- **Verified by:** after the hidden Word was gone, the report's hash matched the
+  backup taken just before the failed run. The second run saved, and a read-only
+  check found every change in place, no Word process left and no lock file.
+- **Follow-up:** none.
+
 ## INC-029 · 2026-11-28 · Skill committed with its frontmatter still broken
 
 - **Phase:** none (repository housekeeping)
